@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/dependency-types" />
+    <meta property="og:site_name" content="Yarn" />
+    <meta property="og:title" content="Yarn" />
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png" />
+    <meta property="og:description" content="Fast, reliable, and secure dependency management." />
+    <title>Types of dependencies | Yarn</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+    <link rel="stylesheet" href="/Yarn_files/main.css?t=2016-10-14T08:45:38+00:00">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/dependency-types">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+</head>
+
+<body>
+    <nav id="header" class="navbar navbar-static-top navbar-light"></nav>
+    <div class="hero">
+        <div class="container">
+            <h1 class="hero-text display-4">依赖的类型</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 guide">
+                <div class="guide-content">
+                    <p>依赖关系有很多不同的用途。一些依赖项是构建项目所需要的，另一些则是运行时需要的。因此，你可以有许多不同类型的依赖（例如
+                        <code class="highlighter-rouge">dependencies</code>, <code class="highlighter-rouge">devDependencies</code>, 和 <code class="highlighter-rouge">peerDependencies</code>).</p>
+                    <p><code class="highlighter-rouge">package.json</code>将会包含所有这些依赖：</p>
+                    <div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-project"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"package-a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"package-b"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.2.1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"peerDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"package-c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.5.4"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"optionalDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"package-d"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.1.0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+                    </div>
+                    <p>大多数人只会添加<code class="highlighter-rouge">dependencies</code> 和 <code class="highlighter-rouge">devDependencies</code>, 但是理解每一种依赖的类型都很重要.</p>
+                    <h5 id="dependencies-a-classtoc-idtoc-dependencies-hreftoc-dependenciesa"><code class="highlighter-rouge">dependencies</code> <a class="toc" id="toc-dependencies" href="#toc-dependencies"></a></h5>
+                    <p>这些是正常依赖，或者你运行代码时需要的依赖（例如React或ImmutableJS）</p>
+                    <h5 id="devdependencies-a-classtoc-idtoc-devdependencies-hreftoc-devdependenciesa"><code class="highlighter-rouge">devDependencies</code> <a class="toc" id="toc-devdependencies" href="#toc-devdependencies"></a></h5>
+                    <p>这些是开发时的依赖。在开发工作流程中的某个点需要的依赖，但是在运行代码时不需要（例如Babel或Flow）</p>
+                    <h5 id="peerdependencies-a-classtoc-idtoc-peerdependencies-hreftoc-peerdependenciesa"><code class="highlighter-rouge">peerDependencies</code> <a class="toc" id="toc-peerdependencies" href="#toc-peerdependencies"></a></h5>
+                    <p>Peer dependencies 是一种特殊类型的依赖，只有当你发布自己的包时才会使用。</p>
+                    <p>添加一个peer dependency 意味着您的包需要一个依赖关系，它和安装您的包的人具有完全相同的依赖关系。这对于像<code class="highlighter-rouge">react</code> 这样的包而言非常有用，需要有一个<code class="highlighter-rouge">react-dom</code> 的单个拷贝，同样也有安装它的人使用。</p>
+                    <h5 id="optionaldependencies-a-classtoc-idtoc-optionaldependencies-hreftoc-optionaldependenciesa"><code class="highlighter-rouge">optionalDependencies</code> <a class="toc" id="toc-optionaldependencies" href="#toc-optionaldependencies"></a></h5>
+                    <p>Optional dependencies顾名思义就是：可选。如果安装失败，Yarn仍然会告诉你安装过程成功。</p>
+                    <p>这对于不一定在每台计算机上都能正常工作的依赖非常有用，并且由于它们并未被安装，您可以有备用的计划（例如：Watchman）</p>
+                    <h5 id="bundleddependencies-a-classtoc-idtoc-bundleddependencies-hreftoc-bundleddependenciesa"><code class="highlighter-rouge">bundledDependencies</code> <a class="toc" id="toc-bundleddependencies" href="#toc-bundleddependencies"></a></h5>
+                    <p>一个包含了包名称的数组，这些包会在发布一起被打包</p>
+                    <p>Bundled dependencies 应该在您的项目中。该功能基本上与正常的dependencies相同。当运行<code class="highlighter-rouge">yarn pack</code>时，它们也会被打包</p>
+                    <p>正常的dependencies通常从npm的registry中安装。Bundled Dependencies在正常的dependencies不足的情况下很有用：</p>
+                    <ul>
+                        <li>当您想重新使用不是来自npm registry或者被修改的第三方库时</li>
+                        <li>当您想重新使用您自己的项目作为模块时</li>
+                        <li>当您想要分发一些文件和您的模块时</li>
+                    </ul>
+                </div>
+                <p class="guide-controls">
+                    <span class="pull-md-left">
+          &larr;
+          Previous:
+          <a href="/Dependencies.html">依赖和版本</a>
+        </span>
+                    <span class="pull-md-right">
+          Next:
+          <a href="/DependencyVersion">依赖的版本</a>
+          &rarr;
+        </span>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <ul class="nav nav-stacked guide-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/en/docs/dependencies">
+             依赖和版本
+            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active">
+              依赖的类型
+            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/en/docs/dependency-versions">
+              依赖的版本
+            </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="feature-divider">
+    <div id="footer" class="container"></div>
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-85522875-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+    <script type="text/javascript" /> $(function() { $("#header").load("Header.html"); $("#footer").load("Footer.html"); });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://yarnpkg.com/en/docs/configuration -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/configuration">
+    <meta property="og:site_name" content="Yarn">
+    <meta property="og:title" content="Yarn">
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
+    <meta property="og:description" content="Fast, reliable, and secure dependency management.">
+    <title>配置 | Yarn中文网</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+    <link rel="stylesheet" href="./Yarn_files/main.css">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/configuration">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
+    <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./Yarn_files/docsearch.min.css">
+</head>
+
+<body youdao="bind">
+    <nav id="header" class="navbar navbar-static-top navbar-light"></nav>
+    <div class="hero">
+        <div class="container">
+            <h1 class="hero-text display-4">配置</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 guide">
+                <div class="guide-content">
+                    <!-- [TODO: Rewrite and accommodate for other configuration files] -->
+                    <h2 id="configuring-your-package-a-classtoc-idtoc-configuring-your-package-hreftoc-configuring-your-packagea">包的配置<a class="toc" id="toc-configuring-your-package" href="https://yarnpkg.com/en/docs/configuration#toc-configuring-your-package"></a></h2>
+                    <p>Yarn通过读取<code class="highlighter-rouge">package.json</code> 文件来识别每一个包和配置Yarn在包内运行时的行为。</p>
+                    <p>来看一个<code class="highlighter-rouge">pet-kitten</code> 包的配置示例, <code class="highlighter-rouge">pet-kitten/package.json</code>:</p>
+                    <div class="highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pet-kitten"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pet.js"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"hand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+                    </div>
+                    <h2 id="use-yarnlock-to-pin-your-dependencies-a-classtoc-idtoc-use-yarn-lock-to-pin-your-dependencies-hreftoc-use-yarn-lock-to-pin-your-dependenciesa">使用 <code class="highlighter-rouge">yarn.lock</code> 来锁定依赖<a class="toc" id="toc-use-yarn-lock-to-pin-your-dependencies" href="https://yarnpkg.com/en/docs/configuration#toc-use-yarn-lock-to-pin-your-dependencies"></a></h2>
+                    <p>Yarn还在项目根目录中使用了一个名为<code class="highlighter-rouge">yarn.lock</code> 的文件，来保证项目的依赖解析快速并且可靠。 你不需要管理这个文件，当你更新依赖配置时，Yarn会自动修改它。</p>
+                    <p>为了确保您的应用程序始终如一的运行, <strong>你需要把 <code class="highlighter-rouge">yarn.lock</code> 文件提交到你的仓库里</strong></p>
+                </div>
+                <p class="guide-controls">
+                    <span class="pull-md-right">
+          后一篇:
+          <a href="/Package.json.html">package.json</a>
+          →
+        </span>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <ul class="nav nav-stacked guide-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active">
+              配置
+            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Package.json.html">
+              package.json
+            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Yarn.lock.html">
+              yarn.lock
+            </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="feature-divider">
+    <div id="footer" class="container"></div>
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-85522875-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("#header").load("Header.html");
+        $("#footer").load("Footer.html");
+    });
+    </script>
+</body>
+
+</html>

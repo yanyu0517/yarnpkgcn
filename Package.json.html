@@ -1,0 +1,562 @@
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/package-json" />
+    <meta property="og:site_name" content="Yarn"/>
+    <meta property="og:title" content="Yarn" />
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png" />
+    <meta property="og:description" content="Fast, reliable, and secure dependency management." />
+
+    <title>package.json | Yarn中文网</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+
+    <link rel="stylesheet" href="/Yarn_files/main.css?t=2016-10-14T00:44:44+00:00">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/package-json">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml" />
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+  </head>
+  <body>
+  <nav id="header" class="navbar navbar-static-top navbar-light"></nav>
+<div class="hero">
+  <div class="container">
+      <h1 class="hero-text display-4">package.json</h1>
+    
+  </div>
+</div>
+
+<div class="container">
+<div class="row">
+  <div class="col-md-8 guide">
+    <div class="guide-content">
+      <h2 id="essentials-a-classtoc-idtoc-essentials-hreftoc-essentialsa">概要 <a class="toc" id="toc-essentials" href="#toc-essentials"></a></h2>
+
+<p><code class="highlighter-rouge">package.json</code> 中两个最重要的属性是 <code class="highlighter-rouge">name</code> 和 <code class="highlighter-rouge">version</code>,
+如果缺少这两个配置则无法正常执行install. <code class="highlighter-rouge">name</code> 和 <code class="highlighter-rouge">version</code>
+共同组成了一个唯一的id。</p>
+
+<h3 id="name-a-classtoc-idtoc-name-hreftoc-namea"><code class="highlighter-rouge">name</code> <a class="toc" id="toc-name" href="#toc-name"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-awesome-package"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>name属性是包的名称。 会被用在URLs, 命令行参数, 和 <code class="highlighter-rouge">node_modules</code>中的目录名称.</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn add <span class="o">[</span>name]
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="rougeHighlight"><code>node_modules/[name]
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="rougeHighlight"><code>https://registry.npmjs.org/[name]/-/[name]-[version].tgz
+</code></pre>
+</div>
+
+<p><strong>规则</strong></p>
+
+<ul>
+  <li>长度必须<= 214个字符(包含私有包前缀 <code class="highlighter-rouge">@scope/</code>)。</li>
+  <li>不能以英文点(<code class="highlighter-rouge">.</code>) 或者下划线 (<code class="highlighter-rouge">_</code>)开头</li>
+  <li>不能出现大写字母.</li>
+  <li>只能使用URL安全字符集中的字符.</li>
+</ul>
+
+<p><strong>提示</strong></p>
+
+<ul>
+  <li>不要使用和Node.js核心包相同的名字</li>
+  <li>名称中不要包含<code class="highlighter-rouge">js</code> 或者 <code class="highlighter-rouge">node</code> 。</li>
+  <li>保持命名的简短和描述性。 名称最好能反映出它是什么, 同时也会用在<code class="highlighter-rouge">require()</code> 调用中。</li>
+  <li>确保
+<a href="https://www.npmjs.com/">NPM仓库中</a> 没有同名的包.</li>
+</ul>
+
+<h3 id="version-a-classtoc-idtoc-version-hreftoc-versiona"><code class="highlighter-rouge">version</code> <a class="toc" id="toc-version" href="#toc-version"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<p>包的当前版本号.</p>
+
+<h2 id="info-a-classtoc-idtoc-info-hreftoc-infoa">信息 <a class="toc" id="toc-info" href="#toc-info"></a></h2>
+
+<h3 id="description-a-classtoc-idtoc-description-hreftoc-descriptiona"><code class="highlighter-rouge">description</code> <a class="toc" id="toc-description" href="#toc-description"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My short description of my awesome package"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>description属性是一个描述性的字符串，用来帮助理解这个包的目标是什么。在包管理仓库中搜索某个包时也可能会被用到</p>
+
+<h3 id="keywords-a-classtoc-idtoc-keywords-hreftoc-keywordsa"><code class="highlighter-rouge">keywords</code> <a class="toc" id="toc-keywords" href="#toc-keywords"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"short"</span><span class="p">,</span><span class="w"> </span><span class="s2">"relevant"</span><span class="p">,</span><span class="w"> </span><span class="s2">"keywords"</span><span class="p">,</span><span class="w"> </span><span class="s2">"for"</span><span class="p">,</span><span class="w"> </span><span class="s2">"searching"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Keywords 是一个字符串数组，在包管理仓库中搜索包的时候非常有用</p>
+
+<h3 id="license-a-classtoc-idtoc-license-hreftoc-licensea"><code class="highlighter-rouge">license</code> <a class="toc" id="toc-license" href="#toc-license"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(MIT or GPL-3.0)"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEE LICENSE IN LICENSE_FILENAME.txt"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNLICENSED"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>所有包都应该指定授权许可，以便用户知道如何使用这个授权及许可的限制。</p>
+
+<p>鼓励使用开源
+(<a href="https://opensource.org/licenses/alphabetical">OSI-approved</a>) 许可，除非
+有特殊的原因不愿意这么做. 如果你的包属于工作的范畴，最好和公司一起商议后再决定使用哪种授权</p>
+
+<p><strong>必须是以下其中之一:</strong></p>
+
+<ul>
+  <li>如果您使用标准license，则为一个有效的<a href="https://spdx.org/licenses/">SPDX license 标识</a> </li>
+  <li>如果使用多个标准license，则为一个有效的
+<a href="https://www.npmjs.com/package/spdx">SPDX license 表达式语法2.0表达式</a>
+</li>
+  <li>如果您使用非标准license，则在您的包顶层中使用一个指向 <code class="highlighter-rouge">&lt;filename&gt;</code>的<code class="highlighter-rouge">SEE LICENSE IN &lt;filename&gt;</code> 字符串。</li>
+  <li>UNLICENSED字符串，如果您不想授予他人根据任何条款使用私人或者未发布的包的去权利的话 </li>
+</ul>
+
+<h2 id="links-a-classtoc-idtoc-links-hreftoc-linksa">Links <a class="toc" id="toc-links" href="#toc-links"></a></h2>
+
+<p>各种文档、issues和源码仓库的存放链接</p>
+
+<h3 id="homepage-a-classtoc-idtoc-homepage-hreftoc-homepagea"><code class="highlighter-rouge">homepage</code> <a class="toc" id="toc-homepage" href="#toc-homepage"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://your-package.org"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>homepage是您的包的文档或者网站的落地页URL</p>
+
+<h3 id="bugs-a-classtoc-idtoc-bugs-hreftoc-bugsa"><code class="highlighter-rouge">bugs</code> <a class="toc" id="toc-bugs" href="#toc-bugs"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"bugs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/user/repo/issues"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>项目问题跟踪的URL。也可以是电子邮件地址，为用户提供了一种方法来找到反馈问题的渠道</p>
+
+<h3 id="repository-a-classtoc-idtoc-repository-hreftoc-repositorya"><code class="highlighter-rouge">repository</code> <a class="toc" id="toc-repository" href="#toc-repository"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="p">,</span><span class="w"> </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/user/repo.git"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="s2">"github:user/repo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gitlab:user/repo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitbucket:user/repo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gist:a1b2c3d4e5f"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>repository是你的包的源码实际存放的位置</p>
+
+<h2 id="maintainers-a-classtoc-idtoc-maintainers-hreftoc-maintainersa">Maintainers <a class="toc" id="toc-maintainers" href="#toc-maintainers"></a></h2>
+
+<p>项目的维护者们。</p>
+
+<h3 id="author-a-classtoc-idtoc-author-hreftoc-authora"><code class="highlighter-rouge">author</code> <a class="toc" id="toc-author" href="#toc-author"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Name"</span><span class="p">,</span><span class="w"> </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"<a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="30495f45705548515d405c551e535f5d">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>"</span><span class="p">,</span><span class="w"> </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://your-website.com"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Name &lt;<a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="344d5b4174514c55594458511a575b59">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>&gt; (http://your-website.com)"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>包作者的信息。每一个author属性对应一个人</p>
+
+<h3 id="contributors-a-classtoc-idtoc-contributors-hreftoc-contributorsa"><code class="highlighter-rouge">contributors</code> <a class="toc" id="toc-contributors" href="#toc-contributors"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"contributors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Friend"</span><span class="p">,</span><span class="w"> </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"<a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="dcbaaeb5b9b2b89cb9a4bdb1acb0b9f2bfb3b1">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>"</span><span class="p">,</span><span class="w"> </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://friends-website.com"</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other Friend"</span><span class="p">,</span><span class="w"> </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"<a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="c6a9b2aea3b486a3bea7abb6aaa3e8a5a9ab">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>"</span><span class="p">,</span><span class="w"> </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://other-website.com"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"contributors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Your Friend &lt;<a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="0660746f63686246637e676b766a632865696b">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>&gt; (http://friends-website.com)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Other Friend &lt;<a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="523d263a372012372a333f223e377c313d3f">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>&gt; (http://other-website.com)"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>包的贡献者们. Contributors 是一组贡献者信息的集合.</p>
+
+<h2 id="files-a-classtoc-idtoc-files-hreftoc-filesa">Files <a class="toc" id="toc-files" href="#toc-files"></a></h2>
+
+<p>你可以指定将包含在项目中的文件，以及项目的入口</p>
+
+<h3 id="files-a-classtoc-idtoc-files-hreftoc-filesa-1"><code class="highlighter-rouge">files</code> <a class="toc" id="toc-files" href="#toc-files"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"filename.js"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"directory/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"glob/*.{js,json}"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>包含在项目中的文件列表。您可以指定单个文件，整个目录，或者使用通配符以满足特定条件的文件。</p>
+
+<h3 id="main-a-classtoc-idtoc-main-hreftoc-maina"><code class="highlighter-rouge">main</code> <a class="toc" id="toc-main" href="#toc-main"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filename.js"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>这是项目功能的入口</p>
+
+<h3 id="bin-a-classtoc-idtoc-bin-hreftoc-bina"><code class="highlighter-rouge">bin</code> <a class="toc" id="toc-bin" href="#toc-bin"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"bin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bin.js"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"command-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bin/command-name.js"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"other-command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bin/other-command"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>项目中需要被安装的的可执行文件</p>
+
+<h3 id="man-a-classtoc-idtoc-man-hreftoc-mana"><code class="highlighter-rouge">man</code> <a class="toc" id="toc-man" href="#toc-man"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"man"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./man/doc.1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"man"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"./man/doc.1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"./man/doc.2"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>如果相关关联的手册页，请在此处添加</p>
+
+<h3 id="directories-a-classtoc-idtoc-directories-hreftoc-directoriesa"><code class="highlighter-rouge">directories</code> <a class="toc" id="toc-directories" href="#toc-directories"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"directories"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"lib"</span><span class="p">:</span><span class="w"> </span><span class="s2">"path/to/lib/"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"path/to/bin/"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"man"</span><span class="p">:</span><span class="w"> </span><span class="s2">"path/to/man/"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"doc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"path/to/doc/"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"example"</span><span class="p">:</span><span class="w"> </span><span class="s2">"path/to/example/"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>安装包时，可以指定准确的位置来放置二进制文件、手册页、文档和示例等</p>
+
+<h2 id="tasks-a-classtoc-idtoc-tasks-hreftoc-tasksa">Tasks <a class="toc" id="toc-tasks" href="#toc-tasks"></a></h2>
+
+<p>您的包可以包含可运行的脚本或其他配置</p>
+
+<h3 id="scripts-a-classtoc-idtoc-scripts-hreftoc-scriptsa"><code class="highlighter-rouge">scripts</code> <a class="toc" id="toc-scripts" href="#toc-scripts"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"build-project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node build-project.js"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Scripts 是自动执行与包相关的任务（如简单构建过程或开发工具）的好方法。使用<code class="highlighter-rouge">"scripts"</code> 字段, 你可以定义要作为 <code class="highlighter-rouge">yarn run &lt;script&gt;</code>. 运行的各种脚本。例如，上面的 <code class="highlighter-rouge">build-project</code> 脚本可以用<code class="highlighter-rouge">yarn run build-project</code> 来调用，调用的结果就是运行<code class="highlighter-rouge">node build-project.js</code>.</p>
+
+<p>某些script名称是特殊的。 如果定义了preinstall脚本，则在install包之前，yarn会先调用<code class="highlighter-rouge">preinstall</code> 脚本. 处于兼容性的原因，名为 <code class="highlighter-rouge">install</code>, <code class="highlighter-rouge">postinstall</code>, 和 <code class="highlighter-rouge">prepublish</code> 的脚本将在包安装完成之后被调用。</p>
+
+<h3 id="config-a-classtoc-idtoc-config-hreftoc-configa"><code class="highlighter-rouge">config</code> <a class="toc" id="toc-config" href="#toc-config"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>在scripts中用到的配置选项和参数</p>
+
+<h2 id="dependencies-a-classtoc-idtoc-dependencies-hreftoc-dependenciesa">Dependencies <a class="toc" id="toc-dependencies" href="#toc-dependencies"></a></h2>
+
+<p>Your package will very likely depend on other packages. You can specify those dependencies in your <code class="highlighter-rouge">package.json</code> file.</p>
+
+<h3 id="dependencies-a-classtoc-idtoc-dependencies-hreftoc-dependenciesa-1"><code class="highlighter-rouge">dependencies</code> <a class="toc" id="toc-dependencies" href="#toc-dependencies"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"package-1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.1.4"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>这些是包在开发和生产环境中所需要添加的依赖</p>
+
+<blockquote>
+  <p>你可以指定一个精确的版本, 一个最低版本 (e.g., <code class="highlighter-rouge">&gt;=</code>) 或者一个版本范围 (e.g. <code class="highlighter-rouge">&gt;= ... &lt;</code>).</p>
+</blockquote>
+
+<h3 id="devdependencies-a-classtoc-idtoc-devdependencies-hreftoc-devdependenciesa"><code class="highlighter-rouge">devDependencies</code> <a class="toc" id="toc-devdependencies" href="#toc-devdependencies"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"package-2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.4.2"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>这些是只在开发环境需要依赖的包，不会添加到生产环境中</p>
+
+<h3 id="peerdependencies-a-classtoc-idtoc-peerdependencies-hreftoc-peerdependenciesa"><code class="highlighter-rouge">peerDependencies</code> <a class="toc" id="toc-peerdependencies" href="#toc-peerdependencies"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"peerDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"package-3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.7.18"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Peer dependencies 允许您声明包与其他包的版本的兼容性。（译者注：<a href="https://nodejs.org/en/blog/npm/peer-dependencies/" target="_blank">扩展阅读</a>）</p>
+
+<h3 id="optionaldependencies-a-classtoc-idtoc-optionaldependencies-hreftoc-optionaldependenciesa"><code class="highlighter-rouge">optionalDependencies</code> <a class="toc" id="toc-optionaldependencies" href="#toc-optionaldependencies"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"optionalDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"package-5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.6.1"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Optional dependencies是可选的，如果没有找到可选的软件包，安装仍将继续</p>
+
+<h3 id="bundleddependencies-a-classtoc-idtoc-bundleddependencies-hreftoc-bundleddependenciesa"><code class="highlighter-rouge">bundledDependencies</code> <a class="toc" id="toc-bundleddependencies" href="#toc-bundleddependencies"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"bundledDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"package-4"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Bundled dependencies 是一个包名称数组，在发布包时会将这些依赖和包捆绑在一起.</p>
+
+<h3 id="flat-a-classtoc-idtoc-flat-hreftoc-flata"><code class="highlighter-rouge">flat</code> <a class="toc" id="toc-flat" href="#toc-flat"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"flat"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>如果你的包只允许使用固定版本的依赖，并且你希望每次执行<a href="/docs/cli/install#toc-yarn-install-flat"><code class="highlighter-rouge">yarn install --flat</code></a> 命令时的行为始终保持一致，把flat设置为<code class="highlighter-rouge">true</code>。</p>
+
+<p>注意，如果你的<code class="highlighter-rouge">package.json</code> 包含 <code class="highlighter-rouge">"flat": true</code>， 并且其他包依赖于你 (e.g. 你正在构建一个库而不是一个应用程序), 这些包也需要在<code class="highlighter-rouge">package.json</code> 中设置 <code class="highlighter-rouge">"flat": true</code>或者在命令行工具中执行<code class="highlighter-rouge">yarn install --flat</code></p>
+
+<h2 id="system-a-classtoc-idtoc-system-hreftoc-systema">System <a class="toc" id="toc-system" href="#toc-system"></a></h2>
+
+<p>您可以提供与软件包相关的系统级别的信息，例如操作系统兼容性等</p>
+
+<h3 id="engines-a-classtoc-idtoc-engines-hreftoc-enginesa"><code class="highlighter-rouge">engines</code> <a class="toc" id="toc-engines" href="#toc-engines"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"engines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"node"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=4.4.7 &lt;7.0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"zlib"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.2.8"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"yarn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.14.0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>engines指定必须和您的包一起使用的客户端版本。这会检查<code class="highlighter-rouge">process.versions</code> 和当前使用的yarn版本</p>
+
+<h3 id="os-a-classtoc-idtoc-os-hreftoc-osa"><code class="highlighter-rouge">os</code> <a class="toc" id="toc-os" href="#toc-os"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"os"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"darwin"</span><span class="p">,</span><span class="w"> </span><span class="s2">"linux"</span><span class="p">],</span><span class="w">
+  </span><span class="nt">"os"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"!win32"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>为您的包指定操作系统的兼容性，会检查<code class="highlighter-rouge">process.platform</code>。</p>
+
+<h3 id="cpu-a-classtoc-idtoc-cpu-hreftoc-cpua"><code class="highlighter-rouge">cpu</code> <a class="toc" id="toc-cpu" href="#toc-cpu"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"x64"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ia32"</span><span class="p">],</span><span class="w">
+  </span><span class="nt">"cpu"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"!arm"</span><span class="p">,</span><span class="w"> </span><span class="s2">"!mips"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>指定您的包只能在某些CPU架构上运行。会检查<code class="highlighter-rouge">process.arch</code>.</p>
+
+<h2 id="publishing-a-classtoc-idtoc-publishing-hreftoc-publishinga">Publishing <a class="toc" id="toc-publishing" href="#toc-publishing"></a></h2>
+
+<h3 id="private-a-classtoc-idtoc-private-hreftoc-privatea"><code class="highlighter-rouge">private</code> <a class="toc" id="toc-private" href="#toc-private"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>如果不希望您的包在包管理仓库中发布，设置为<code class="highlighter-rouge">true</code>.</p>
+
+<h3 id="publishconfig-a-classtoc-idtoc-publishconfig-hreftoc-publishconfiga"><code class="highlighter-rouge">publishConfig</code> <a class="toc" id="toc-publishconfig" href="#toc-publishconfig"></a></h3>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"publishConfig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>发布软件包时将使用这些配置。例如，您可以给你的包添加一些tag</p>
+
+    </div>
+
+    <p class="guide-controls">
+      
+        <span class="pull-md-left">
+          &larr;
+          前一篇:
+          <a href="/Configuration.html">配置</a>
+        </span>
+      
+
+      
+        <span class="pull-md-right">
+          后一篇:
+          <a href="/Yarn.lock.html">yarn.lock</a>
+          &rarr;
+        </span>
+      
+    </p>
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <ul class="nav nav-stacked guide-nav">
+      
+        <li class="nav-item">
+          
+            <a class="nav-link" href="/Configuration.html">
+              配置
+            </a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a class="nav-link active">
+              package.json
+            </a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a class="nav-link" href="/Yarn.lock.html">
+              yarn.lock
+            </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+<hr class="feature-divider">
+
+<div id="footer" class="container"></div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85522875-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+      $(function(){
+          $("#header").load("Header.html"); 
+          $("#footer").load("Footer.html"); 
+      });
+    </script>
+    
+  </body>
+</html>
