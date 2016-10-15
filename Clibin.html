@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<!-- saved from url=(0032)https://yarnpkg.com/en/docs/cli/ -->
+<!-- saved from url=(0035)https://yarnpkg.com/en/docs/cli/bin -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/">
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/bin">
     <meta property="og:site_name" content="Yarn">
     <meta property="og:title" content="Yarn">
     <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
     <meta property="og:description" content="Fast, reliable, and secure dependency management.">
 
-    <title>CLI介绍 | Yarn中文网</title>
+    <title>yarn bin | Yarn中文网</title>
     <meta name="description" content="Fast, reliable, and secure dependency management.">
 
     <link rel="stylesheet" href="./Yarn_files/main.css">
-    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/bin">
     <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
 
     <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
@@ -73,7 +73,7 @@
   <div class="container">
     
 
-      <h1 class="hero-text display-4">CLI 介绍</h1>
+      <h1 class="hero-text display-4">yarn bin</h1>
     
   </div>
 </div>
@@ -96,6 +96,10 @@
 
 
   
+
+  
+
+  
     
     
     
@@ -115,27 +119,27 @@
 
 
     <div class="guide-content">
-      <p>Yarn提供了丰富的命令行接口来管理的Yarn包，包括安装、管理、发布等。</p>
+      <p>显示yarn <code class="highlighter-rouge">bin</code>的文件夹。</p>
 
-<p>右侧提供了Yarn的所有命令清单，按字母排列。下面是一些常用的命令：</p>
+<h5 id="yarn-bin-a-classtoc-idtoc-yarn-bin-hreftoc-yarn-bina"><code class="highlighter-rouge">yarn bin</code> <a class="toc" id="toc-yarn-bin" href="#toc-yarn-bin"></a></h5>
 
-<ul>
-  <li><a href="Cliadd.html"><code class="highlighter-rouge">yarn add</code></a>：为你的包添加一个依赖。</li>
-  <li><a href="Cliinit.html"><code class="highlighter-rouge">yarn init</code></a>：以Yarn的方式初始化一个包</li>
-  <li><a href="Cliinstall.html"><code class="highlighter-rouge">yarn install</code></a>：安装<code class="highlighter-rouge">package.json</code> 文件中所有的依赖包。</li>
-  <li><a href="Clipublish.html"><code class="highlighter-rouge">yarn publish</code></a>：发布一个包到包管理仓库中。</li>
-  <li><a href="Cliremove.html"><code class="highlighter-rouge">yarn remove</code></a>：删除包中的一个依赖</li>
-</ul>
+<p><code class="highlighter-rouge">yarn bin</code> will print the folder where yarn will install executable files for your package. An example of an executable may be a script that you have defined for your package that can be executed via <a href="https://yarnpkg.com/en/docs/cli/run"><code class="highlighter-rouge">yarn run</code></a>.</p>
 
     </div>
 
     <p class="guide-controls">
       
+        <span class="pull-md-left">
+          ←
+          Previous:
+          <a href="https://yarnpkg.com/en/docs/cli/add">yarn add</a>
+        </span>
+      
 
       
         <span class="pull-md-right">
-          下一步：
-          <a href="Cliadd.html">yarn add</a>
+          Next:
+          <a href="https://yarnpkg.com/en/docs/cli/cache">yarn cache</a>
           →
         </span>
       
@@ -144,7 +148,7 @@
     
   </div>
 
-  <div class="col-md-4" id="cliNav">
+  <div id="cliNav" class="col-md-4">
   </div>
 </div>
 
@@ -181,9 +185,8 @@
           $("#header").load("Header.html"); 
           $("#footer").load("Footer.html"); 
           $('#cliNav').load("CLINav.html", function(){
-            $('#cliNav').find('a[href="/CLI.html"]').removeAttr('href').addClass('active');
+            $('#cliNav').find('a[href="/Clibin.html"]').removeAttr('href').addClass('active');
           });
-
         });
     </script>
     <script type="text/javascript" src="./Yarn_files/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
