@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<!-- saved from url=(0035)https://yarnpkg.com/en/docs/cli/bin -->
+<!-- saved from url=(0037)https://yarnpkg.com/en/docs/cli/cache -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/bin">
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/cache">
     <meta property="og:site_name" content="Yarn">
     <meta property="og:title" content="Yarn">
     <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
     <meta property="og:description" content="Fast, reliable, and secure dependency management.">
 
-    <title>yarn bin | Yarn中文网</title>
+    <title>yarn cache | Yarn中文网</title>
     <meta name="description" content="Fast, reliable, and secure dependency management.">
 
     <link rel="stylesheet" href="./Yarn_files/main.css">
-    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/bin">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/cache">
     <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
 
     <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
@@ -73,7 +73,7 @@
   <div class="container">
     
 
-      <h1 class="hero-text display-4">yarn bin</h1>
+      <h1 class="hero-text display-4">yarn cache</h1>
     
   </div>
 </div>
@@ -100,6 +100,8 @@
   
 
   
+
+  
     
     
     
@@ -119,11 +121,14 @@
 
 
     <div class="guide-content">
-      <p>显示yarn <code class="highlighter-rouge">bin</code>文件夹的位置。</p>
+      <h5 id="yarn-cache-ls-a-classtoc-idtoc-yarn-cache-ls-hreftoc-yarn-cache-lsa"><code class="highlighter-rouge">yarn cache ls</code> <a class="toc" id="toc-yarn-cache-ls" href="#toc-yarn-cache-ls"></a></h5>
 
-<h5 id="yarn-bin-a-classtoc-idtoc-yarn-bin-hreftoc-yarn-bina"><code class="highlighter-rouge">yarn bin</code> <a class="toc" id="toc-yarn-bin" href="#toc-yarn-bin"></a></h5>
+<p>Yarn为每一个依赖包都设置了全局缓存，<code class="highlighter-rouge">yarn cache ls</code>会列会这些依赖包。</p>
 
-<p><code class="highlighter-rouge">yarn bin</code>命令将会打印你项目（包）的yarn的bin文件夹，bin文件夹中包含了yarn的可执行文件。一个可执行文件可以是一个js文件，被<a href="/Clirun.html"><code class="highlighter-rouge">yarn run</code>执行。</p>
+<h5 id="yarn-cache-clean-a-classtoc-idtoc-yarn-cache-clean-hreftoc-yarn-cache-cleana"><code class="highlighter-rouge">yarn cache clean</code> <a class="toc" id="toc-yarn-cache-clean" href="https://yarnpkg.com/en/docs/cli/cache#toc-yarn-cache-clean"></a></h5>
+
+<p>清楚缓存，直到下次运行<code class="highlighter-rouge">yarn</code>或者<code class="highlighter-rouge">yarn install</code>命令，缓存会被再次设置</p>
+
     </div>
 
     <p class="guide-controls">
@@ -131,14 +136,14 @@
         <span class="pull-md-left">
           ←
           前一步：
-          <a href="/Cliadd.html">yarn add</a>
+          <a href="/Clibin.html">yarn bin</a>
         </span>
       
 
       
         <span class="pull-md-right">
           下一步：
-          <a href="/Clicache">yarn cache</a>
+          <a href="/Clicheck.html">yarn check</a>
           →
         </span>
       
@@ -184,7 +189,7 @@
           $("#header").load("Header.html"); 
           $("#footer").load("Footer.html"); 
           $('#cliNav').load("CLINav.html", function(){
-            $('#cliNav').find('a[href="/Clibin.html"]').removeAttr('href').addClass('active');
+            $('#cliNav').find('a[href="/Clicache.html"]').removeAttr('href').addClass('active');
           });
         });
     </script>

@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<!-- saved from url=(0035)https://yarnpkg.com/en/docs/cli/bin -->
+<!-- saved from url=(0037)https://yarnpkg.com/en/docs/cli/check -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/bin">
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/check">
     <meta property="og:site_name" content="Yarn">
     <meta property="og:title" content="Yarn">
     <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
     <meta property="og:description" content="Fast, reliable, and secure dependency management.">
 
-    <title>yarn bin | Yarn中文网</title>
+    <title>yarn check | Yarn中文网</title>
     <meta name="description" content="Fast, reliable, and secure dependency management.">
 
     <link rel="stylesheet" href="./Yarn_files/main.css">
-    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/bin">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/check">
     <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
 
     <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
@@ -73,7 +73,7 @@
   <div class="container">
     
 
-      <h1 class="hero-text display-4">yarn bin</h1>
+      <h1 class="hero-text display-4">yarn check</h1>
     
   </div>
 </div>
@@ -100,6 +100,10 @@
   
 
   
+
+  
+
+  
     
     
     
@@ -119,26 +123,29 @@
 
 
     <div class="guide-content">
-      <p>显示yarn <code class="highlighter-rouge">bin</code>文件夹的位置。</p>
+      <h5 id="yarn-check-a-classtoc-idtoc-yarn-check-hreftoc-yarn-checka"><code class="highlighter-rouge">yarn check</code> <a class="toc" id="toc-yarn-check" href="#toc-yarn-check"></a></h5>
 
-<h5 id="yarn-bin-a-classtoc-idtoc-yarn-bin-hreftoc-yarn-bina"><code class="highlighter-rouge">yarn bin</code> <a class="toc" id="toc-yarn-bin" href="#toc-yarn-bin"></a></h5>
+<p>验证项目的<code class="highlighter-rouge">package.json</code>文件中描述的依赖的版本是否与yarn lock文件中记录的是否一致。</p>
 
-<p><code class="highlighter-rouge">yarn bin</code>命令将会打印你项目（包）的yarn的bin文件夹，bin文件夹中包含了yarn的可执行文件。一个可执行文件可以是一个js文件，被<a href="/Clirun.html"><code class="highlighter-rouge">yarn run</code>执行。</p>
+<h5 id="yarn-check---integrity-a-classtoc-idtoc-yarn-check-integrity-hreftoc-yarn-check-integritya"><code class="highlighter-rouge">yarn check --integrity</code> <a class="toc" id="toc-yarn-check-integrity" href="#toc-yarn-check-integrity"></a></h5>
+
+<p>验证项目的<code class="highlighter-rouge">package.json</code>文件中描述的依赖的版本和哈希值与yarn lock文件中记录的是否一致，这有助于验证项目中的依赖是否被更改。</p>
+
     </div>
 
     <p class="guide-controls">
       
         <span class="pull-md-left">
           ←
-          前一步：
-          <a href="/Cliadd.html">yarn add</a>
+          前一步
+          <a href="/Clicache.html">yarn cache</a>
         </span>
       
 
       
         <span class="pull-md-right">
           下一步：
-          <a href="/Clicache">yarn cache</a>
+          <a href="/Cliclean.html">yarn clean</a>
           →
         </span>
       
@@ -184,7 +191,7 @@
           $("#header").load("Header.html"); 
           $("#footer").load("Footer.html"); 
           $('#cliNav').load("CLINav.html", function(){
-            $('#cliNav').find('a[href="/Clibin.html"]').removeAttr('href').addClass('active');
+            $('#cliNav').find('a[href="/Clicheck.html"]').removeAttr('href').addClass('active');
           });
         });
     </script>
