@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://yarnpkg.com/en/docs/migrating-from-npm -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/migrating-from-npm">
+    <meta property="og:site_name" content="Yarn">
+    <meta property="og:title" content="Yarn">
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
+    <meta property="og:description" content="Fast, reliable, and secure dependency management.">
+
+    <title>从npm迁移 | Yarn</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+
+    <link rel="stylesheet" href="./Migrating from npm _ Yarn_files/main.css">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/migrating-from-npm">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
+
+    <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="./Migrating from npm _ Yarn_files/docsearch.min.css">
+  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+<nav id="header" class="navbar navbar-static-top navbar-light">
+</nav>
+
+    
+
+
+
+
+
+
+
+
+
+<div class="hero">
+  <div class="container">
+    
+
+      <h1 class="hero-text display-4">从npm迁移</h1>
+    
+  </div>
+</div>
+
+<div class="container">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+
+
+
+
+<div class="row">
+  <div class="col-md-8 guide">
+    
+
+
+
+
+
+
+
+
+    <div class="guide-content">
+      <p>对于大多数用户来说从npm迁移到Yarn是很容易的。Yarn可以直接使用npm的<code class="highlighter-rouge">package.json</code>并且安装任何的npm包。</p>
+
+<p>当你尝试在你的npm项目中使用Yarn，只需要运行下面的命令：</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn
+</code></pre>
+</div>
+
+<p>Yarn的解析算法会对你的<code class="highlighter-rouge">node_modules</code>文件夹里的内容进行重新编排，这个解析算法是完全兼容<a href="https://nodejs.org/api/modules.html#modules_all_together">node.js module resolution algorithm</a>的。</p>
+
+<p>如果在执行时发生了错误，请搜索现有的issue查看是否有解决方案。如果没有的话，请<a href="https://github.com/yarnpkg/yarn/issues">发issue</a>。</p>
+
+<p>当你运行<code class="highlighter-rouge">yarn</code>或者<code class="highlighter-rouge">yarn add &lt;package&gt;</code>命令了，Yarn会在你包的根目录下生成一个<code class="highlighter-rouge">yarn.lock</code>文件。你不需要关心这个文件的内容，只是把它提交到代码仓库中。当其他人下载你的包，并执行Yarn安装时，会得到跟你完全一样的依赖（从依赖版本，到依赖结构）。</p>
+
+<p>在大多数情况下<code class="highlighter-rouge">yarn</code>或者<code class="highlighter-rouge">yarn add</code>都是可以工作的。但是有少数情况，如果<code class="highlighter-rouge">package.json</code>中的内容有问题，可能会造成Yarn在选择依赖的时候发生依赖冲突的情况，尤其在一些大型的项目中<code class="highlighter-rouge">npm install</code>没有正常安装，那么开发者会删除掉<code class="highlighter-rouge">node_modules</code>文件夹，重新安装。如果发生这种情况，请首先使用<code class="highlighter-rouge">npm</code>去安装正确版本的依赖，然后切换到Yarn。</p>
+
+<p>团队中的其他开发人员仍然可以使用<code class="highlighter-rouge">npm</code>，因此并不需要整个团队在同一时间做切换。那些使用<code class="highlighter-rouge">yarn</code>的开发者，他们在本地安装的依赖是完全一样的（从依赖版本，到依赖结构），而那些使用<code class="highlighter-rouge">npm</code>的开发者，他们在本地安装的依赖则略有差别，这也是<code class="highlighter-rouge">npm</code>的预期行为。</p>
+
+<p>在切换到Yarn后，如果你觉得Yarn并不适合你，那么你可以再次拥抱<code class="highlighter-rouge">npm</code>，这将会非常容易，并不需要做什么特别的改动。如果团队中没有人使用Yarn了，就可以删除掉<code class="highlighter-rouge">yarn.lock</code>文件。</p>
+
+<p>如果你现在在使用<code class="highlighter-rouge">npm-shrinkwrap.json</code>，那么请注意了使用Yarn可能会得到与其不同的依赖。Yarn并不支持多个npm shrinkwrap文件，因为这些shrinkwrap文件中没有足够的信息支持Yarn的更先进的算法。对于一个npm shrinkwrap来说会更容易切换到Yarn，只要把<code class="highlighter-rouge">npm-shrinkwrap.json</code>删除，并创建<code class="highlighter-rouge">yarn.lock</code> file.</p>文件就可以了。</p>
+
+<h3 id="cli-commands-comparison-a-classtoc-idtoc-cli-commands-comparison-hreftoc-cli-commands-comparisona">CLI命令行对照<a class="toc" id="toc-cli-commands-comparison" href="#toc-cli-commands-comparison"></a></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>npm</th>
+      <th>Yarn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">npm install</code></td>
+      <td><code class="highlighter-rouge">yarn install</code></td>
+    </tr>
+    <tr>
+      <td><strong><em>(N/A)</em></strong></td>
+      <td><code class="highlighter-rouge">yarn install --flat</code></td>
+    </tr>
+    <tr>
+      <td><strong><em>(N/A)</em></strong></td>
+      <td><code class="highlighter-rouge">yarn install --har</code></td>
+    </tr>
+    <tr>
+      <td><strong><em>(N/A)</em></strong></td>
+      <td><code class="highlighter-rouge">yarn install --no-lockfile</code></td>
+    </tr>
+    <tr>
+      <td><strong><em>(N/A)</em></strong></td>
+      <td><code class="highlighter-rouge">yarn install --pure-lockfile</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">npm install [package]</code></td>
+      <td><strong><em>(N/A)</em></strong></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">npm install --save [package]</code></td>
+      <td><code class="highlighter-rouge">yarn add [package]</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">npm install --save-dev [package]</code></td>
+      <td><code class="highlighter-rouge">yarn add [package] --dev</code></td>
+    </tr>
+    <tr>
+      <td><strong><em>(N/A)</em></strong></td>
+      <td><code class="highlighter-rouge">yarn add [package] --peer</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">npm install --save-optional [package]</code></td>
+      <td><code class="highlighter-rouge">yarn add [package] --optional</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">npm install --save-exact [package]</code></td>
+      <td><code class="highlighter-rouge">yarn add [package] --exact</code></td>
+    </tr>
+    <tr>
+      <td><strong><em>(N/A)</em></strong></td>
+      <td><code class="highlighter-rouge">yarn add [package] --tilde</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">npm install --global [package]</code></td>
+      <td><code class="highlighter-rouge">yarn global add [package]</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">npm uninstall [package]</code></td>
+      <td><strong><em>(N/A)</em></strong></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">npm uninstall --save [package]</code></td>
+      <td><code class="highlighter-rouge">yarn remove [package]</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">npm uninstall --save-dev [package]</code></td>
+      <td><code class="highlighter-rouge">yarn remove [package]</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">npm uninstall --save-optional [package]</code></td>
+      <td><code class="highlighter-rouge">yarn remove [package]</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">rm -rf node_modules &amp;&amp; npm install</code></td>
+      <td><code class="highlighter-rouge">yarn upgrade</code></td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+    <p class="guide-controls">
+      
+
+      
+    </p>
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <ul class="nav nav-stacked guide-nav">
+      
+        <li class="nav-item">
+          
+            <a class="nav-link active">
+              从npm迁移
+            </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+<hr class="feature-divider">
+
+<div id="footer" class="container">
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85522875-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <script type="text/javascript" src="./Migrating from npm _ Yarn_files/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(function(){
+          $("#header").load("Header.html"); 
+          $("#footer").load("Footer.html"); 
+        });
+    </script>
+    <script type="text/javascript" src="./Migrating from npm _ Yarn_files/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./Migrating from npm _ Yarn_files/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="./Migrating from npm _ Yarn_files/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+
+    
+  
+
+</body></html>

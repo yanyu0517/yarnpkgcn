@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)https://yarnpkg.com/en/docs/cli/config -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/config">
+    <meta property="og:site_name" content="Yarn">
+    <meta property="og:title" content="Yarn">
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
+    <meta property="og:description" content="Fast, reliable, and secure dependency management.">
+
+    <title>yarn config | Yarn中文网</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+
+    <link rel="stylesheet" href="./Yarn_files/main.css">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/config">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
+
+    <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="./Yarn_files/docsearch.min.css">
+  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+<nav id="header" class="navbar navbar-static-top navbar-light">
+</nav>
+
+    
+
+
+
+
+
+
+
+
+
+<div class="hero">
+  <div class="container">
+    
+
+      <h1 class="hero-text display-4">yarn config</h1>
+    
+  </div>
+</div>
+
+<div class="container">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+
+
+
+
+<div class="row">
+  <div class="col-md-8 guide">
+    
+
+
+
+
+
+
+
+
+    <div class="guide-content">
+      <p class="lead">管理Yarn的配置文件</p>
+
+<h5 id="yarn-config-set-key-value--g--global-a-classtoc-idtoc-yarn-config-set-g-global-hreftoc-yarn-config-set-g-globala"><code class="highlighter-rouge">yarn config set &lt;key&gt; &lt;value&gt; [-g|--global]</code> <a class="toc" id="toc-yarn-config-set-g-global" href="#toc-yarn-config-set-g-global"></a></h5>
+
+<p>以键值对的方式设置配置文件.</p>
+
+<p>例子：</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code><span class="gp">$ </span>yarn config <span class="nb">set </span>init-license BSD-2-Clause
+yarn config vx.x.x
+success Set <span class="s2">"init-license"</span> to <span class="s2">"BSD-2-Clause"</span>.
+✨  Done <span class="k">in </span>0.05s.
+
+</code></pre>
+</div>
+
+<h5 id="yarn-config-get-key-a-classtoc-idtoc-yarn-config-get-hreftoc-yarn-config-geta"><code class="highlighter-rouge">yarn config get &lt;key&gt;</code> <a class="toc" id="toc-yarn-config-get" href="#toc-yarn-config-get"></a></h5>
+
+<p>打印给定<code class="highlighter-rouge">key</code>的配置的值。</p>
+
+<p>例子：</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code><span class="gp">$ </span>yarn config get init-license
+BSD-2-Clause
+</code></pre>
+</div>
+
+<h5 id="yarn-config-delete-key-a-classtoc-idtoc-yarn-config-delete-hreftoc-yarn-config-deletea"><code class="highlighter-rouge">yarn config delete &lt;key&gt;</code> <a class="toc" id="toc-yarn-config-delete" href="#toc-yarn-config-delete"></a></h5>
+
+<p>从配置中删除给定的<code class="highlighter-rouge">key</code>的值。</p>
+
+<p>例子：</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code><span class="gp">$ </span>yarn config delete <span class="nb">test</span>-key
+yarn config vx.x.x
+success Deleted <span class="s2">"test-key"</span>.
+✨  Done <span class="k">in </span>0.06s.
+</code></pre>
+</div>
+
+<h5 id="yarn-config-list-a-classtoc-idtoc-yarn-config-list-hreftoc-yarn-config-lista"><code class="highlighter-rouge">yarn config list</code> <a class="toc" id="toc-yarn-config-list" href="#toc-yarn-config-list"></a></h5>
+
+<p>显示当前的配置</p>
+
+<p>列子：</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code><span class="gp">$ </span>yarn config list
+yarn config vx.x.x
+info yarn config
+<span class="o">{</span> <span class="s1">'version-tag-prefix'</span>: <span class="s1">'v'</span>,
+  <span class="s1">'version-git-tag'</span>: <span class="nb">true</span>,
+  <span class="s1">'version-git-sign'</span>: <span class="nb">false</span>,
+  <span class="s1">'version-git-message'</span>: <span class="s1">'v%s'</span>,
+  <span class="s1">'init-version'</span>: <span class="s1">'1.0.0'</span>,
+  <span class="s1">'init-license'</span>: <span class="s1">'MIT'</span>,
+  <span class="s1">'save-prefix'</span>: <span class="s1">'^'</span>,
+  <span class="s1">'ignore-scripts'</span>: <span class="nb">false</span>,
+  <span class="s1">'ignore-optional'</span>: <span class="nb">true</span>,
+  registry: <span class="s1">'https://registry.yarnpkg.com'</span>,
+  <span class="s1">'user-agent'</span>: <span class="s1">'yarn/0.15.0 npm/? node/v6.2.1 darwin x64'</span> <span class="o">}</span>
+info npm config
+<span class="o">{</span> registry: <span class="s1">'https://registry.npmjs.org/'</span>,
+  <span class="s1">'//localhost:4873/:_authToken'</span>: <span class="s1">'some-auth-token'</span> <span class="o">}</span>
+✨  Done <span class="k">in </span>0.05s.
+
+</code></pre>
+</div>
+
+
+    </div>
+
+    <p class="guide-controls">
+      
+        <span class="pull-md-left">
+          ←
+          前一步：
+          <a href="Cliclean.html">yarn clean</a>
+        </span>
+      
+
+      
+        <span class="pull-md-right">
+          后一步：
+          <a href="Cligenerate-lock-entry.html">yarn generate-lock-entry</a>
+          →
+        </span>
+      
+    </p>
+
+    
+  </div>
+
+  <div id="cliNav" class="col-md-4">
+  </div>
+</div>
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+<hr class="feature-divider">
+
+<div id="footer" class="container">
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85522875-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <script type="text/javascript" src="./Yarn_files/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(function(){
+          $("#header").load("Header.html"); 
+          $("#footer").load("Footer.html"); 
+          $('#cliNav').load("CLINav.html", function(){
+            $('#cliNav').find('a[href="/Cliconfig.html"]').removeAttr('href').addClass('active');
+          });
+        });
+    </script>
+    <script type="text/javascript" src="./Yarn_files/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./Yarn_files/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="./Yarn_files/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+
+    
+  
+
+</body></html>

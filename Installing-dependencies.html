@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://yarnpkg.com/en/docs/installing-dependencies -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/installing-dependencies">
+    <meta property="og:site_name" content="Yarn">
+    <meta property="og:title" content="Yarn">
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
+    <meta property="og:description" content="Fast, reliable, and secure dependency management.">
+
+    <title>安装依赖 | Yarn</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+
+    <link rel="stylesheet" href="./Yarn_files/main.css">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/installing-dependencies">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
+
+    <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="./Yarn_files/docsearch.min.css">
+  </head>
+  <body>
+    
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+<nav id="header" class="navbar navbar-static-top navbar-light">
+</nav>
+
+    
+
+
+
+
+
+
+
+
+
+<div class="hero">
+  <div class="container">
+    
+
+      <h1 class="hero-text display-4">安装依赖</h1>
+    
+  </div>
+</div>
+
+<div class="container">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+
+
+
+
+<div class="row">
+  <div class="col-md-8 guide">
+    
+
+
+
+
+
+
+
+
+    <div class="guide-content">
+      <p>当你从<a href="Version-control.html">代码仓库</a>中下载了代码之后，需要安装项目所需要的依赖。</p>
+
+<blockquote>
+  <p>如果你运行<a href="https://yarnpkg.com/en/docs/managing-dependencies#toc-adding-a-dependency">yarn add</a>命令，添加一个依赖，依赖的安装过程会自动完成。</p>
+</blockquote>
+
+<h3 id="installing-dependencies-a-classtoc-idtoc-installing-dependencies-hreftoc-installing-dependenciesa">安装依赖<a class="toc" id="toc-installing-dependencies" href="#toc-installing-dependencies"></a></h3>
+
+<p><a href="Cli-install.html"><code class="highlighter-rouge">yarn install</code></a>命令用来安装一个项目的全部依赖。项目的这些依赖是在项目的<code class="highlighter-rouge">package.json</code>文件中描述的，并被储存在<code class="highlighter-rouge">yarn.lock</code>文件中</p>
+
+<p>通常在下面两种情况下需要安装依赖</p>
+
+<ol>
+  <li>一个全新的项目刚刚被下载</li>
+  <li>依赖有了更新</li>
+</ol>
+
+<h3 id="installing-options-a-classtoc-idtoc-installing-options-hreftoc-installing-optionsa">安装命令参数<a class="toc" id="toc-installing-options" href="#toc-installing-options"></a></h3>
+
+<p>安装命令参数，包括：</p>
+
+<ol>
+  <li>安装所有依赖：<code class="highlighter-rouge">yarn</code> or <code class="highlighter-rouge">yarn install</code></li>
+  <li>依赖只会安装一个版本，也就是flat：<code class="highlighter-rouge">yarn install --flat</code></li>
+  <li>强制重新安装所有依赖<code class="highlighter-rouge">yarn install --force</code></li>
+  <li>只安装production版本的依赖<code class="highlighter-rouge">yarn install --production</code></li>
+</ol>
+
+<p>查看<code class="highlighter-rouge">yarn install</code>命令<a href="https://yarnpkg.com/en/docs/cli/install">所有参数</a>。</p>
+
+    </div>
+
+    <p class="guide-controls">
+      
+        <span class="pull-md-left">
+          ←
+          前一步：
+          <a href="Managing-dependencies.html">管理依赖</a>
+        </span>
+      
+
+      
+        <span class="pull-md-right">
+          下一步：
+          <a href="Version-control.html">版本控制</a>
+          →
+        </span>
+      
+    </p>
+
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+<div class="list-group">
+  <strong class="list-group-item bg-faded">相关资料</strong>
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  <a class="list-group-item list-group-item-action" href="Dependency-versions.html">
+    <h5 class="list-group-item-heading">依赖和版本控制</h5>
+    <p class="list-group-item-text text-muted">Yarn会为你处理不同种类的依赖和依赖的不同版本。
+</p>
+  </a>
+      
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+  <a class="list-group-item list-group-item-action" href="https://yarnpkg.com/en/docs/package-json">
+    <h5 class="list-group-item-heading">package.json</h5>
+  </a>
+        
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+  <a class="list-group-item list-group-item-action" href="Yarn.lock.html">
+    <h5 class="list-group-item-heading">yarn.lock</h5>
+  </a>
+        
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+  <a class="list-group-item list-group-item-action" href="Cli-install.html">
+    <h5 class="list-group-item-heading">yarn install</h5>
+  </a>
+        
+  
+    
+      
+    
+  
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+</div>
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <ul class="nav nav-stacked guide-nav">
+      
+        <li class="nav-item">
+          
+            <a class="nav-link" href="WorkFlow.html">
+              The Yarn工作流
+            </a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a class="nav-link" href="Creating-a-project.html">
+              新建一个项目
+            </a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a class="nav-link" href="Managing-dependencies.html">
+              管理依赖
+            </a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a class="nav-link active">
+              安装依赖
+            </a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a class="nav-link" href="Version-control.html">
+              与版本控制协作
+            </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+<hr class="feature-divider">
+
+<div id="footer" class="container">
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85522875-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <script type="text/javascript" src="./Yarn_files/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(function(){
+          $("#header").load("Header.html"); 
+          $("#footer").load("Footer.html"); 
+        });
+    </script>
+    </body></html>

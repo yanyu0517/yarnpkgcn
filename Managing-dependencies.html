@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://yarnpkg.com/en/docs/managing-dependencies -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/managing-dependencies">
+    <meta property="og:site_name" content="Yarn">
+    <meta property="og:title" content="Yarn">
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
+    <meta property="og:description" content="Fast, reliable, and secure dependency management.">
+
+    <title>管理依赖 | Yarn</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+
+    <link rel="stylesheet" href="./Yarn_files/main.css">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/managing-dependencies">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
+
+    <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="./Yarn_files/docsearch.min.css">
+  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+<nav id="header" class="navbar navbar-static-top navbar-light">
+</nav>
+
+    
+
+
+
+
+
+
+
+
+
+<div class="hero">
+  <div class="container">
+    
+
+      <h1 class="hero-text display-4">管理依赖</h1>
+    
+  </div>
+</div>
+
+<div class="container">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+    
+    
+
+
+
+
+<div class="row">
+  <div class="col-md-8 guide">
+    
+
+
+
+
+
+
+
+
+    <div class="guide-content">
+      
+<p>新增、更新或者删除依赖命令。</p>
+
+<p>每一个命令都会更新
+<a href="Package.json.html"><code class="highlighter-rouge">package.json</code></a>和<a href="Yarn.lock.html"><code class="highlighter-rouge">yarn.lock</code></a>文件。</p>
+
+<h3 id="adding-a-dependency-a-classtoc-idtoc-adding-a-dependency-hreftoc-adding-a-dependencya">新增依赖<a class="toc" id="toc-adding-a-dependency" href="#toc-adding-a-dependency"></a></h3>
+
+<p>当你需要使用其他依赖包，你首先新增依赖，运行下面的命令：</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn add <span class="o">[</span>package]
+</code></pre>
+</div>
+
+<p>将会在<code class="highlighter-rouge">package.json</code>中自动添加<code class="highlighter-rouge">[package]</code>。同时也会更新<code class="highlighter-rouge">yarn.lock</code>中的相关依赖。</p>
+
+<div class="language-diff highlighter-rouge"><pre class="rougeHighlight"><code>  {
+    "name": "my-package",
+    "dependencies": {
+<span class="gi">+     "package-1": "^1.0.0"
+</span>    }
+  }
+</code></pre>
+</div>
+
+<p>还可以新增其他类型的依赖
+<a href="Dependency-types.html">types of dependencies</a>：</p>
+
+<ul>
+  <li><code class="highlighter-rouge">yarn add --dev</code> to add to <code class="highlighter-rouge">devDependencies</code></li>
+  <li><code class="highlighter-rouge">yarn add --peer</code> to add to <code class="highlighter-rouge">peerDependencies</code></li>
+  <li><code class="highlighter-rouge">yarn add --optional</code> to add to <code class="highlighter-rouge">optionalDependencies</code></li>
+</ul>
+
+<p>你可以通过指定<a href="Dependency-versions.html">dependency version</a>或者<a href="Tag.html">tag</a>参数，来指定依赖包的版本</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn add <span class="o">[</span>package]@[version]
+yarn add <span class="o">[</span>package]@[tag]
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">[version]</code>或者<code class="highlighter-rouge">[tag]</code>参数会在<code class="highlighter-rouge">package.json</code>文件中被明确声明出来。
+<p>例如：</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn add package-1@1.2.3
+yarn add package-2@^1.0.0
+yarn add package-3@beta
+</code></pre>
+</div>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"package-1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.2.3"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"package-2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"package-3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"beta"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="upgrading-a-dependency-a-classtoc-idtoc-upgrading-a-dependency-hreftoc-upgrading-a-dependencya">更新依赖<a class="toc" id="toc-upgrading-a-dependency" href="#toc-upgrading-a-dependency"></a></h3>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn upgrade <span class="o">[</span>package]
+yarn upgrade <span class="o">[</span>package]@[version]
+yarn upgrade <span class="o">[</span>package]@[dist-tag]
+</code></pre>
+</div>
+
+<p>同时更新<code class="highlighter-rouge">package.json</code>和<code class="highlighter-rouge">yarn.lock</code>文件。</p>
+
+<div class="language-diff highlighter-rouge"><pre class="rougeHighlight"><code>  {
+    "name": "my-package",
+    "dependencies": {
+<span class="gd">-     "package-1": "^1.0.0"
+</span><span class="gi">+     "package-1": "^2.0.0"
+</span>    }
+  }
+</code></pre>
+</div>
+
+<h3 id="removing-a-dependency-a-classtoc-idtoc-removing-a-dependency-hreftoc-removing-a-dependencya">删除依赖<a class="toc" id="toc-removing-a-dependency" href="#toc-removing-a-dependency"></a></h3>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn remove <span class="o">[</span>package]
+</code></pre>
+</div>
+
+<p>同时更新<code class="highlighter-rouge">package.json</code>和<code class="highlighter-rouge">yarn.lock</code>文件</p>
+
+    </div>
+
+    <p class="guide-controls">
+      
+        <span class="pull-md-left">
+          ←
+          前一步：
+          <a href="Creating-a-project">新建一个项目</a>
+        </span>
+      
+
+      
+        <span class="pull-md-right">
+          下一步：
+          <a href="Installing-dependencies.html">安装依赖</a>
+          →
+        </span>
+      
+    </p>
+
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+<div class="list-group">
+  <strong class="list-group-item bg-faded">更多</strong>
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  <a class="list-group-item list-group-item-action" href="Dependency-versions.html">
+    <h5 class="list-group-item-heading">依赖和版本</h5>
+    <p class="list-group-item-text text-muted">Yarn会为你处理不同种类的依赖和依赖的不同版本。
+</p>
+  </a>
+      
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+  <a class="list-group-item list-group-item-action" href="Package.json.html">
+    <h5 class="list-group-item-heading">package.json</h5>
+  </a>
+        
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+  <a class="list-group-item list-group-item-action" href="Yarn.lock.html">
+    <h5 class="list-group-item-heading">yarn.lock</h5>
+  </a>
+        
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+  <a class="list-group-item list-group-item-action" href="Add.html">
+    <h5 class="list-group-item-heading">yarn add</h5>
+  </a>
+        
+  
+    
+      
+    
+  
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+  <a class="list-group-item list-group-item-action" href="Upgrade.html">
+    <h5 class="list-group-item-heading">yarn upgrade</h5>
+  </a>
+        
+  
+    
+      
+    
+  
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+  <a class="list-group-item list-group-item-action" href="Remove.html">
+    <h5 class="list-group-item-heading">yarn remove</h5>
+  </a>
+        
+  
+    
+      
+    
+  
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+</div>
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <ul class="nav nav-stacked guide-nav">
+      
+        <li class="nav-item">
+          
+            <a class="nav-link" href="WorkFlow.html">
+              Yarn工作流
+            </a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a class="nav-link" href="Creating-a-project.html">
+              新建一个项目
+            </a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a class="nav-link active">
+              管理依赖
+            </a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a class="nav-link" href="Installing-dependencies.html">
+              安装依赖
+            </a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a class="nav-link" href="Version-control.html">
+              与版本控制协作
+            </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+<hr class="feature-divider">
+
+<div id="footer" class="container">
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85522875-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <script type="text/javascript" src="./Yarn_files/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(function(){
+          $("#header").load("Header.html"); 
+          $("#footer").load("Footer.html"); 
+        });
+    </script>
+    <script type="text/javascript" src="./Yarn_files/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./Yarn_files/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="./Yarn_files/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+
+    
+  
+
+</body></html>
