@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url" content="https://yarnpkg.com/en/org/release-process" />
+    <meta property="og:site_name" content="Yarn" />
+    <meta property="og:title" content="Yarn" />
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png" />
+    <meta property="og:description" content="Fast, reliable, and secure dependency management." />
+    <title>Release Process | Yarn</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+    <link rel="stylesheet" href="/Yarn_files/main.css?t=2016-10-17T04:42:37+00:00">
+    <link rel="canonical" href="https://yarnpkg.com/en/org/release-process">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+</head>
+
+<body>
+    <nav id="header" class="navbar navbar-static-top navbar-light"></nav>
+    <div class="hero">
+        <div class="container">
+            <h1 class="hero-text display-4">Release Process</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 guide">
+                <div class="guide-content">
+                    <h2 id="to-release-a-new-version-of-yarn-a-classtoc-idtoc-to-release-a-new-version-of-yarn-hreftoc-to-release-a-new-version-of-yarna">Yarn的新版本发布 <a class="toc" id="toc-to-release-a-new-version-of-yarn" href="#toc-to-release-a-new-version-of-yarn"></a></h2>
+                    <ol>
+                        <li>确保当前主分支在 <a href="https://circleci.com/gh/yarnpkg/yarn">Circle</a> 和 <a href="https://travis-ci.com/yarnpkg/yarn/builds">Travis</a>上为绿色</li>
+                        <li>确保您的本地副本是最新的，然后运行 <code class="highlighter-rouge">./scripts/release-branch.sh</code>. 这将创建<code class="highlighter-rouge">0.xx-stable</code> 稳定的分支，CircleCI将自动创建一个GitHub版本</li>
+                        <li>一旦GitHub版本创建，将 <code class="highlighter-rouge">.msi</code> 文件从 <a href="https://ci.appveyor.com/project/kittens/yarn">该分支的AppVeyor构建</a>如假道Github版本。请注意这<strong>不是</strong> 自动的，因为我们后续会需要Authenticode签署安装程序（这将在AppVeyor外部完成）</li>
+                        <li>验证所有弓箭是否连接到版本 (<code class="highlighter-rouge">.tar.gz</code>, <code class="highlighter-rouge">.deb</code>, <code class="highlighter-rouge">.rpm</code> and <code class="highlighter-rouge">.msi</code>). 在选中此项之前，请<strong>不要继续操作</strong></li>
+                        <li>Bump <code class="highlighter-rouge">latest_version</code> 在 <a href="https://github.com/yarnpkg/website/blob/master/_config.yml#L9">_config.yml网站上</a>。这会更新下载URL(<code class="highlighter-rouge">/latest.tar.gz</code> 等)以指向新版本。最终这将会被自动化完成(<a href="https://github.com/yarnpkg/website/issues/187">#187</a>)</li>
+                        <li>Debian和CentOS 仓库应该在5分钟内自动更新最新版本 (注意<a href="https://github.com/yarnpkg/releases/commits/gh-pages">提交</a>)</li>
+                    </ol>
+                    <p>TODO: 更新Chocolatey的说明应该在这里进行，当前由Daniel手动执行。</p>
+                    <h2 id="to-patch-existing-version-of-yarn-a-classtoc-idtoc-to-patch-existing-version-of-yarn-hreftoc-to-patch-existing-version-of-yarna">在现有的Yarn版本上打补丁 <a class="toc" id="toc-to-patch-existing-version-of-yarn" href="#toc-to-patch-existing-version-of-yarn"></a></h2>
+                    <ul>
+                        <li>切换到已释出的分支 <code class="highlighter-rouge">git checkout 0.x-stable</code>, 例如 0.7-stable</li>
+                        <li>优选master分支进行修复</li>
+                        <li>为新的release打一个<code class="highlighter-rouge">npm patch版本</code>的tag, 这会创建一个改变了package.json和 tag<code class="highlighter-rouge">v0.xx.1</code>的commit</li>
+                        <li>Push 到 origin <code class="highlighter-rouge">git push origin 0.x-stable --follow-tags</code></li>
+                    </ul>
+                    <h2 id="old-manual-process-a-classtoc-idtoc-old-manual-process-hreftoc-old-manual-processa">旧的发布流程 <a class="toc" id="toc-old-manual-process" href="#toc-old-manual-process"></a></h2>
+                    <p>这是发布流程的旧版本，供参考（如果任何自动化中断时）。构建发布时一个两个步骤的过程--大多数东西都是建立在Linux上，一些Windows特定的定西（如Windows安装程序）是建立在Windows上的</p>
+                    <p><strong>在Linux上:</strong></p>
+                    <ol>
+                        <li><code class="highlighter-rouge">./scripts/release-branch.sh</code></li>
+                        <li>构建Debian和RPM包: <code class="highlighter-rouge">./scripts/build-deb.sh</code></li>
+                        <li>将 <code class="highlighter-rouge">.deb</code> 和 <code class="highlighter-rouge">.rpm</code> 文件从 <code class="highlighter-rouge">artifacts</code> 目录附加到Github版本</li>
+                    </ol>
+                    <p><strong>在 Windows上:</strong></p>
+                    <ol>
+                        <li>正常构建Yarn (<code class="highlighter-rouge">yarn install &amp;&amp; yarn run build</code>)</li>
+                        <li><code class="highlighter-rouge">powershell .\scripts\build-dist.ps1</code></li>
+                        <li>构建Windows安装程序: <code class="highlighter-rouge">yarn run build-win-installer</code>
+                            <ul>
+                                <li>TODO: 为安装程序添加Authenticode签名 (<a href="https://github.com/yarnpkg/yarn/issues/619">#619</a>)</li>
+                            </ul>
+                        </li>
+                        <li>构建 Chocolately 包: <code class="highlighter-rouge">yarn run build-chocolatey</code></li>
+                        <li>将生成的 <code class="highlighter-rouge">.msi</code> 文件从<code class="highlighter-rouge">artifacts</code>目录附加到Github release中</li>
+                        <li><a href="https://chocolatey.org/packages/upload">上传 Chocolatey 包</a> (以后我们会做成自动化).
+                            <ul>
+                                <li>注意: 只有在MSI连接到Github版本时才这样做，因为Chocolatey通过下载链接拉取MSI</li>
+                                <li>还要注意: 在上传Chocolatey软件包后修改MSI将会终端Chocolatey软件包，因为它包含了MSI的hash。确保始终同时更新这两个。</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <p class="guide-controls">
+                    <span class="pull-md-left">
+          &larr;
+          前一篇:
+          <a href="/Translations.html">翻译</a>
+        </span>
+                    <span class="pull-md-right">
+          后一篇:
+          <a href="/Governance.html">治理</a>
+          &rarr;
+        </span>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <ul class="nav nav-stacked guide-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Orgnization.html">
+              组织
+            </a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/Code-of-conduct.html">
+              行为规范
+            </a>
+                    </li>
+                   <li class="nav-item">
+                        <a class="nav-link " href="/Contributing.html">
+              贡献
+            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Translations.html">
+              翻译
+            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" active >
+              发布流程
+            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Governance.html">
+              治理
+            </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="feature-divider">
+    <div id="footer" class="container"></div>
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-85522875-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+    <script type="text/javascript" /> $(function() { $("#header").load("Header.html"); $("#footer").load("Footer.html"); });
+    </script>
+</body>
+
+</html>

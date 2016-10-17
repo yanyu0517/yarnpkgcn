@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/dependency-versions" />
+    <meta property="og:site_name" content="Yarn" />
+    <meta property="og:title" content="Yarn" />
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png" />
+    <meta property="og:description" content="Fast, reliable, and secure dependency management." />
+    <title>依赖的版本 | Yarn中文网</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+    <link rel="stylesheet" href="/Yarn_files/main.css?t=2016-10-16T19:06:16+00:00">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/dependency-versions">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+</head>
+
+<body>
+   <nav id="header" class="navbar navbar-static-top navbar-light"></nav>
+    <div class="hero">
+        <div class="container">
+            <h1 class="hero-text display-4">依赖的版本</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 guide">
+                <div class="guide-content">
+                    <h2 id="semantic-versioning-a-classtoc-idtoc-semantic-versioning-hreftoc-semantic-versioninga">语义化版本定义 <a class="toc" id="toc-semantic-versioning" href="#toc-semantic-versioning"></a></h2>
+                    <p>Yarn中的包遵循 <a href="http://semver.org/">语义化版本定义规则</a>, 也称为 “semver”. 当你从仓库中安装一个新包时，它就会以semver版本范围的格式添加到你的<code class="highlighter-rouge">package.json</code>中。</p>
+                    <p>这些版本分为<code class="highlighter-rouge">major.minor.patch</code> 看起来像: <code class="highlighter-rouge">3.14.1</code>, <code class="highlighter-rouge">0.42.0</code>, <code class="highlighter-rouge">2.7.18</code>。版本的每个部分在不同的时间递增:</p>
+                    <ul>
+                        <li>当您对包的API进行<strong>破坏性</strong>或<strong>不兼容</strong>更改时，增加 <code class="highlighter-rouge">major</code></li>
+                        <li>在添加<strong>新功能</strong>并保持<strong>向后兼容</strong>时，增加<code class="highlighter-rouge">minor</code> </li>
+                        <li>当<strong>修复Bug</strong>并保持<strong>向后兼容</strong>时，增加<code class="highlighter-rouge">patch</code></li>
+                    </ul>
+                    <blockquote>
+                        <p><strong>注意:</strong> 有时候还有一些添加了“标签”或“扩展”名的版本号， (例如 <code class="highlighter-rouge">2.0.0-beta.3</code>)</p>
+                    </blockquote>
+                    <p>当开发人员谈论两个互相“兼容”的semver版本时，他们指的是<strong>向后兼容</strong> 的更改 (<code class="highlighter-rouge">minor</code> 和
+                        <code class="highlighter-rouge">patch</code>).</p>
+                    <h2 id="version-ranges-a-classtoc-idtoc-version-ranges-hreftoc-version-rangesa">版本范围<a class="toc" id="toc-version-ranges" href="#toc-version-ranges"></a></h2>
+                    <p>当你想指定一个依赖关系时，你在<code class="highlighter-rouge">package.json</code> 中指定依赖的名字和一个<strong>版本范围</strong>，就像下面这样:</p>
+                    <div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"package-1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;=2.0.0 &lt;3.1.4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"package-2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.4.2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"package-3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"~2.7.1"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+                    </div>
+                    <p>你会注意到，我们有许多版本范围之间的分隔符，这些字符 <code class="highlighter-rouge">&gt;=</code>, <code class="highlighter-rouge">&lt;</code>, <code class="highlighter-rouge">^</code>, 和 <code class="highlighter-rouge">~</code>, 是 <strong>运算符</strong> 它们用于指定<strong>版本范围</strong>.</p>
+                    <p>版本范围的目的是指定依赖项的哪些版本将对您的代码有效</p>
+                    <h4 id="comparators-a-classtoc-idtoc-comparators-hreftoc-comparatorsa">比较器 <a class="toc" id="toc-comparators" href="#toc-comparators"></a></h4>
+                    <p>每个版本范围都是由<strong>比较器</strong>组成。这些<em>比较器</em>只是一个运算符，后面跟一个<em>版本号</em>。这里有一些基本的运算符</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>比较器</th>
+                                <th>描述</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="highlighter-rouge">&lt;2.0.0</code></td>
+                                <td><strong><em>小于</em></strong> <code class="highlighter-rouge">2.0.0</code>的任意版本</td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">&lt;=3.1.4</code></td>
+                                <td><strong><em>小于等于</em></strong> <code class="highlighter-rouge">3.1.4</code>的任意版本</td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">&gt;0.4.2</code></td>
+                                <td><strong><em>大于</em></strong> <code class="highlighter-rouge">0.4.2</code>的任意版本</td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">&gt;=2.7.1</code></td>
+                                <td><strong><em>大于等于</em></strong> <code class="highlighter-rouge">2.7.1</code>的任意版本</td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">=4.6.6</code></td>
+                                <td><strong><em>等于</em></strong> <code class="highlighter-rouge">4.6.6</code>版本</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <blockquote>
+                        <p><strong>注意</strong>:如果没有指定任何运算符，默认的范围就是<code class="highlighter-rouge">=</code>。因此<code class="highlighter-rouge">=</code> 运算符实际上是可选的</p>
+                    </blockquote>
+                    <h4 id="intersections-a-classtoc-idtoc-intersections-hreftoc-intersectionsa">交集 <a class="toc" id="toc-intersections" href="#toc-intersections"></a></h4>
+                    <p>比较器可以通过空格连接以创建<strong>比较器集合</strong>. 这将创建比较器集合的<strong>交集</strong>。例如比较器组 <code class="highlighter-rouge">&gt;=2.0.0 &lt;3.1.4</code> 表示 <em>“大于或者等于 <code class="highlighter-rouge">2.0.0</code>
+<strong>且</strong> 小于 <code class="highlighter-rouge">3.1.4</code>“</em>.</p>
+                    <h4 id="unions-a-classtoc-idtoc-unions-hreftoc-unionsa">并集 <a class="toc" id="toc-unions" href="#toc-unions"></a></h4>
+                    <p>完整的版本范围可以包括通过<code class="highlighter-rouge">||</code>连接在一起的多个比较器集合的<strong>并集</strong> 如果满足并集的任一侧，则满足整个版本范围。例如，版本范围<code class="highlighter-rouge">&lt;2.0.0 || &gt;3.1.4</code> 表示 <em>“小于 <code class="highlighter-rouge">2.0.0</code> <strong>或者</strong> 大于 <code class="highlighter-rouge">3.1.4</code>“</em>.</p>
+                    <h4 id="pre-release-tags-a-classtoc-idtoc-pre-release-tags-hreftoc-pre-release-tagsa">预发布标签 <a class="toc" id="toc-pre-release-tags" href="#toc-pre-release-tags"></a></h4>
+                    <p>版本也可以有 <strong>预发布标签</strong> (例如： <code class="highlighter-rouge">3.1.4-beta.2</code>).如果比较器包含了具有预发布标签的版本，则仅能匹配具有相同<code class="highlighter-rouge">major.minor.patch</code> 的版本。</p>
+                    <p>例如，范围 <code class="highlighter-rouge">&gt;=3.1.4-beta.2</code>将匹配 <code class="highlighter-rouge">3.1.4-beta.2</code> 或者
+                        <code class="highlighter-rouge">3.1.4-beta.12</code>, 但 <em>不</em> 匹配 <code class="highlighter-rouge">3.1.5-beta.1</code>即便它在
+                        <em>技术上</em> “大于或者等于” (<code class="highlighter-rouge">&gt;=</code>) <code class="highlighter-rouge">3.1.4-beta.2</code>版本。</p>
+                    <p>预发布通常包含意外中断的更改，通常不希望匹配您指定的版本之外的预发布，因此这个行为很有用处。</p>
+                    <h4 id="advanced-version-ranges-a-classtoc-idtoc-advanced-version-ranges-hreftoc-advanced-version-rangesa">高级版本范围 <a class="toc" id="toc-advanced-version-ranges" href="#toc-advanced-version-ranges"></a></h4>
+                    <h5 id="hyphen-ranges-a-classtoc-idtoc-hyphen-ranges-hreftoc-hyphen-rangesa">连字符范围 <a class="toc" id="toc-hyphen-ranges" href="#toc-hyphen-ranges"></a></h5>
+                    <p>连字符范围 (e.g. <code class="highlighter-rouge">2.0.0 - 3.1.4</code>) 指定了 <em>包含</em> 集. 如果版本的一部分被省略 (例如. <code class="highlighter-rouge">0.4</code> 或 <code class="highlighter-rouge">2</code>) ，则用零来填充。</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>版本范围</th>
+                                <th>扩展版本范围</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="highlighter-rouge">2.0.0 - 3.1.4</code></td>
+                                <td><code class="highlighter-rouge">&gt;=2.0.0 &lt;=3.1.4</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">0.4 - 2</code></td>
+                                <td><code class="highlighter-rouge">&gt;=0.4.2 &lt;=2.0.0</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5 id="x-ranges-a-classtoc-idtoc-x-ranges-hreftoc-x-rangesa">X-范围 <a class="toc" id="toc-x-ranges" href="#toc-x-ranges"></a></h5>
+                    <p> <code class="highlighter-rouge">X</code>, <code class="highlighter-rouge">x</code>, 或 <code class="highlighter-rouge">*</code>中的任何一个都可以用于保留未指定版本的部分或者全部
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>版本范围</th>
+                                <th>扩展版本范围</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="highlighter-rouge">*</code></td>
+                                <td><code class="highlighter-rouge">&gt;=0.0.0</code> (任何版本)</td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">2.x</code></td>
+                                <td><code class="highlighter-rouge">&gt;=2.0.0 &lt;3.0.0</code> (匹配major版本)</td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">3.1.x</code></td>
+                                <td><code class="highlighter-rouge">&gt;=3.1.0 &lt;3.2.0</code> (匹配major和minor版本)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>如果省略版本的一部分，则默认使用X-范围</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>版本范围</th>
+                                <th>扩展版本范围</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="highlighter-rouge"> </code> (空字符串)</td>
+                                <td><code class="highlighter-rouge">*</code> 或 <code class="highlighter-rouge">&gt;=0.0.0</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">2</code></td>
+                                <td><code class="highlighter-rouge">2.x.x</code> 或 <code class="highlighter-rouge">&gt;=2.0.0 &lt;3.0.0</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">3.1</code></td>
+                                <td><code class="highlighter-rouge">3.1.x</code> 或 <code class="highlighter-rouge">&gt;=3.1.0 &lt;3.2.0</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5 id="tilde-ranges-a-classtoc-idtoc-tilde-ranges-hreftoc-tilde-rangesa">波浪号范围 <a class="toc" id="toc-tilde-ranges" href="#toc-tilde-ranges"></a></h5>
+                    <p>使用 <code class="highlighter-rouge">~</code>与指定的次要版本允许 <code class="highlighter-rouge">patch</code> 更改. 使用 <code class="highlighter-rouge">~</code> 仅指定主要版本将允许 <code class="highlighter-rouge">minor</code> 更改.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>版本范围</th>
+                                <th>扩展版本范围</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="highlighter-rouge">~3.1.4</code></td>
+                                <td><code class="highlighter-rouge">&gt;=3.1.4 &lt;3.2.0</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">~3.1</code></td>
+                                <td><code class="highlighter-rouge">3.1.x</code> or <code class="highlighter-rouge">&gt;=3.1.0 &lt;3.2.0</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">~3</code></td>
+                                <td><code class="highlighter-rouge">3.x</code> or <code class="highlighter-rouge">&gt;=3.0.0 &lt;4.0.0</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <blockquote>
+                        <p><strong>注意:</strong>在波浪号范围中指定预发布版本只会匹配同一完整版本中的预发布版本。例如
+                            <code class="highlighter-rouge">~3.1.4-beta.2</code>将与 <code class="highlighter-rouge">3.1.4-beta.4</code> 匹配，但不与 <code class="highlighter-rouge">3.1.5-beta.2</code>匹配，因为 <code class="highlighter-rouge">major.minor.patch</code>版本不同。</p>
+                    </blockquote>
+                    <h5 id="caret-ranges-a-classtoc-idtoc-caret-ranges-hreftoc-caret-rangesa">^ 范围 <a class="toc" id="toc-caret-ranges" href="#toc-caret-ranges"></a></h5>
+                    <p>允许不修改版本中第一个非零数字的更改，即 <code class="highlighter-rouge">3.1.4</code> 中的<code class="highlighter-rouge">3</code> 或者 <code class="highlighter-rouge">0.4.2</code>中的<code class="highlighter-rouge">4</code>。</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>版本范围</th>
+                                <th>扩展版本范围</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="highlighter-rouge">^3.1.4</code></td>
+                                <td><code class="highlighter-rouge">&gt;=3.1.4 &lt;4.0.0</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">^0.4.2</code></td>
+                                <td><code class="highlighter-rouge">&gt;=0.4.2 &lt;0.5.0</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">^0.0.2</code></td>
+                                <td><code class="highlighter-rouge">&gt;=0.0.2 &lt;0.0.3</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <blockquote>
+                        <p><strong>注意:</strong>默认情况下，当您运行<code class="highlighter-rouge">yarn add [package-name]</code>时，将使用^范围。</p>
+                    </blockquote>
+                    <p>如何省略了版本的一部分，则用零填充确实的部分。但是，它们仍然允许更改该值。</p>
+                    <table>
+                        <thead>
+                            <tr>
+                               <th>版本范围</th>
+                                <th>扩展版本范围</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="highlighter-rouge">^0.0.x</code></td>
+                                <td><code class="highlighter-rouge">&gt;=0.0.0 &lt;0.1.0</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">^0.0</code></td>
+                                <td><code class="highlighter-rouge">&gt;=0.0.0 &lt;0.1.0</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">^0.x</code></td>
+                                <td><code class="highlighter-rouge">&gt;=0.0.0 &lt;1.0.0</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="highlighter-rouge">^0</code></td>
+                                <td><code class="highlighter-rouge">&gt;=0.0.0 &lt;1.0.0</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="more-resources-a-classtoc-idtoc-more-resources-hreftoc-more-resourcesa">更多资源 <a class="toc" id="toc-more-resources" href="#toc-more-resources"></a></h3>
+                    <ul>
+                        <li>有关此版本控制系统如何工作的完整规范，请参见
+                            <a href="https://github.com/npm/node-semver"><code class="highlighter-rouge">node-semver</code> 的README</a>.</li>
+                        <li>使用<a href="https://semver.npmjs.com/">npm semver计算器</a>在实际包上测试版本控制系统。</li>
+                    </ul>
+                </div>
+                <p class="guide-controls">
+                    <span class="pull-md-left">
+          &larr;
+          前一篇:
+          <a href="/DependencyType.html">依赖的类型</a>
+        </span>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <ul class="nav nav-stacked guide-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Dependencies.html">
+             依赖和版本
+            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/DependencyType.html">
+              依赖的类型
+            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active">
+              依赖的版本
+            </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="feature-divider">
+    <div id="footer" class="container"></div>
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-85522875-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+    <script type="text/javascript" /> 
+    	$(function() { $("#header").load("Header.html"); $("#footer").load("Footer.html"); });
+    </script>
+</body>
+
+</html>

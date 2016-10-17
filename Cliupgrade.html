@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/upgrade" />
+    <meta property="og:site_name" content="Yarn" />
+    <meta property="og:title" content="Yarn" />
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png" />
+    <meta property="og:description" content="Fast, reliable, and secure dependency management." />
+    <title>yarn upgrade | Yarn中文网</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+    <link rel="stylesheet" href="/Yarn_files/main.css?t=2016-10-17T08:16:46+00:00">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/upgrade">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+</head>
+
+<body>
+    <nav id="header" class="navbar navbar-static-top navbar-light"></nav>
+    <div class="hero">
+        <div class="container">
+            <h1 class="hero-text display-4">yarn upgrade</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 guide">
+                <div class="guide-content">
+                    <p class="lead">根据指定的范围将软件包升级到最新的版本.</p>
+                    <h5 id="yarn-upgrade-a-classtoc-idtoc-yarn-upgrade-hreftoc-yarn-upgradea"><code class="highlighter-rouge">yarn upgrade</code> <a class="toc" id="toc-yarn-upgrade" href="#toc-yarn-upgrade"></a></h5>
+                    <p>此命令根据 <code class="highlighter-rouge">package.json</code> 文件中指定的版本范围，将所有依赖项更新到其最新的版本。<code class="highlighter-rouge">yarn.lock</code>文件也将被重新创建。</p>
+                    <div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code><span class="gp">$ </span>yarn upgrade
+yarn upgrade vx.x.x
+<span class="o">[</span>1/4] 🔍  Resolving packages...
+<span class="o">[</span>2/4] 🚚  Fetching packages...
+<span class="o">[</span>3/4] 🔗  Linking dependencies...
+<span class="o">[</span>4/4] 📃  Building fresh packages...
+success Saved lockfile.
+success Saved 867 new dependencies.
+<span class="o">[</span>...]
+├─ <a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="452f2036316826292c0574736b756b74">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>
+│  ├─ <a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="077e667560742a776675746275473429352937">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>
+│  └─ <a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="8ff6eefde8fccfbaa1bfa1bf">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>
+├─ <a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="d2b8b7a1a6ffb6bbb4b492e3e4fce2fce2">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>
+│  └─ <a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="26424f4040661508160817">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>
+<span class="o">[</span>...]
+└─ <a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="bdc4dccfdacefd899385938c">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>
+✨  Done <span class="k">in </span>20.79s.
+</code></pre>
+                    </div>
+                    <p>另参见:</p>
+                    <ul>
+                        <li><a href="/Cliadd.html"><code class="highlighter-rouge">yarn add</code></a>: 为当前的包添加一个依赖包.</li>
+                    </ul>
+                </div>
+                <p class="guide-controls">
+                    <span class="pull-md-left">
+          &larr;
+          上一篇:
+          <a href="/Cliunlink.html">yarn unlink</a>
+        </span>
+                    <span class="pull-md-right">
+          下一篇:
+          <a href="/Cliversion.html">yarn version</a>
+          &rarr;
+        </span>
+                </p>
+            </div>
+            <hr class="feature-divider">
+            <div id="footer" class="container"></div>
+            <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-85522875-1', 'auto');
+            ga('send', 'pageview');
+            </script>
+            <script type="text/javascript" src="./Yarn_files/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+            <script type="text/javascript">
+            $(function() {
+                $("#header").load("Header.html");
+                $("#footer").load("Footer.html");
+                $('#cliNav').load("CLINav.html", function() {
+                    $('#cliNav').find('a[href="/Cliadd.html"]').removeAttr('href').addClass('active');
+                });
+            });
+            </script>
+            <script type="text/javascript" src="./Yarn_files/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+            <script type="text/javascript" src="./Yarn_files/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+            <script type="text/javascript" src="./Yarn_files/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+</body>
+
+</html>
