@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<!-- saved from url=(0037)https://yarnpkg.com/en/docs/cli/login -->
+<!-- saved from url=(0037)https://yarnpkg.com/en/docs/cli/owner -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/login">
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/owner">
     <meta property="og:site_name" content="Yarn">
     <meta property="og:title" content="Yarn">
     <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
     <meta property="og:description" content="Fast, reliable, and secure dependency management.">
 
-    <title>yarn login | Yarn中文网</title>
+    <title>yarn owner | Yarn中文网</title>
     <meta name="description" content="Fast, reliable, and secure dependency management.">
 
     <link rel="stylesheet" href="./Yarn_files/main.css">
-    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/login">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/owner">
     <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
 
     <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
@@ -73,7 +73,7 @@
   <div class="container">
     
 
-      <h1 class="hero-text display-4">yarn login</h1>
+      <h1 class="hero-text display-4">yarn owner</h1>
     
   </div>
 </div>
@@ -124,6 +124,14 @@
   
 
   
+
+  
+
+  
+
+  
+
+  
     
     
     
@@ -143,26 +151,37 @@
 
 
     <div class="guide-content">
-      
-<p class="lead">保存<a href="https://www.npmjs.com/">npm registry</a>的用户名和邮箱地址。</p>
+      <p class="lead">管理包的拥有者。</p>
 
-<h5 id="yarn-login-a-classtoc-idtoc-yarn-login-hreftoc-yarn-logina"><code class="highlighter-rouge">yarn login</code> <a class="toc" id="toc-yarn-login" href="#toc-yarn-login"></a></h5>
+<h3 id="what-is-a-package-owner-a-classtoc-idtoc-what-is-a-package-owner-hreftoc-what-is-a-package-ownera">什么是包的拥有者？<a class="toc" id="toc-what-is-a-package-owner" href="#toc-what-is-a-package-owner"></a></h3>
 
-<p>运行这个命令将会提示你输入<a href="https://www.npmjs.com/">npm registry</a>的用户名和邮箱地址。这将不会询问你的密码。之后，当你运行那些需要授权的命令，比如<a href="/Clipublish.html"><code class="highlighter-rouge">yarn publish</code></a>等等，你需要手动输入你的密码。</p>
+<p>在包仓库中，一个包的“拥有者”就是有权限能够修改包的用户。一个包可以有多个拥有者。</p>
 
-<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn login
-</code></pre>
-</div>
+<p>拥有者有权限能够执行下面的任务：</p>
 
-<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn login vx.x.x
-question npm username: my-username
-question npm email: my-username@example.com
-✨  Done <span class="k">in </span>6.03s.
-</code></pre>
-</div>
+<ol>
+  <li>发布包的新版本</li>
+  <li>增加或者删除包的某个拥有者</li>
+  <li>修改包的元数据</li>
+</ol>
 
-<p>运行<a href="Clilogout.html"><code class="highlighter-rouge">yarn logout</code></a>命令，可以删除掉之前保存的用户名和邮箱 you can delete your
-username and email.</p>
+<h3 id="caveats-a-classtoc-idtoc-caveats-hreftoc-caveatsa">注意事项<a class="toc" id="toc-caveats" href="#toc-caveats"></a></h3>
+
+<p>现阶段没有其他的权限等级，用户的权限只有两种，能够修改或者不能够修改。在未来，可能会对权限进行细分，发展处更多种权限角色，但是现在并没有。</p>
+
+<h3 id="commands-a-classtoc-idtoc-commands-hreftoc-commandsa">命令<a class="toc" id="toc-commands" href="#toc-commands"></a></h3>
+
+<h5 id="yarn-owner-ls-package-a-classtoc-idtoc-yarn-owner-ls-hreftoc-yarn-owner-lsa"><code class="highlighter-rouge">yarn owner ls &lt;package&gt;</code> <a class="toc" id="toc-yarn-owner-ls" href="#toc-yarn-owner-ls"></a></h5>
+
+<p>列出<code class="highlighter-rouge">&lt;package&gt;</code>的所有拥有者。</p>
+
+<h5 id="yarn-owner-add-user-package-a-classtoc-idtoc-yarn-owner-add-hreftoc-yarn-owner-adda"><code class="highlighter-rouge">yarn owner add &lt;user&gt; &lt;package&gt;</code> <a class="toc" id="toc-yarn-owner-add" href="#toc-yarn-owner-add"></a></h5>
+
+<p>把<code class="highlighter-rouge">&lt;user&gt;</code>增加为<code class="highlighter-rouge">&lt;package&gt;</code>的拥有者。执行命令的用户必须是<code class="highlighter-rouge">&lt;package&gt;</code>的拥有者，这样才有权限执行命令。</p>
+
+<h5 id="yarn-owner-rm-user-package-a-classtoc-idtoc-yarn-owner-rm-hreftoc-yarn-owner-rma"><code class="highlighter-rouge">yarn owner rm &lt;user&gt; &lt;package&gt;</code> <a class="toc" id="toc-yarn-owner-rm" href="#toc-yarn-owner-rm"></a></h5>
+
+<p>从<code class="highlighter-rouge">&lt;package&gt;</code>删除一个拥有者。执行命令的用户必须是<code class="highlighter-rouge">&lt;package&gt;</code>的拥有者，这样才有权限执行命令。</p>
 
     </div>
 
@@ -171,14 +190,14 @@ username and email.</p>
         <span class="pull-md-left">
           ←
           前一步：
-          <a href="Clilink.html">yarn link</a>
+          <a href="Clioutdated.html">yarn outdated</a>
         </span>
       
 
       
         <span class="pull-md-right">
-          后一步：
-          <a href="Clilogout.html">yarn logout</a>
+          下一步：
+          <a href="Clipack.html">yarn pack</a>
           →
         </span>
       
@@ -224,7 +243,7 @@ username and email.</p>
           $("#header").load("Header.html"); 
           $("#footer").load("Footer.html"); 
           $('#cliNav').load("CLINav.html", function(){
-            $('#cliNav').find('a[href="/Clilogin.html"]').removeAttr('href').addClass('active');
+            $('#cliNav').find('a[href="/Cliowner.html"]').removeAttr('href').addClass('active');
           });
         });
     </script>

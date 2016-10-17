@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<!-- saved from url=(0037)https://yarnpkg.com/en/docs/cli/login -->
+<!-- saved from url=(0034)https://yarnpkg.com/en/docs/cli/ls -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/login">
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/ls">
     <meta property="og:site_name" content="Yarn">
     <meta property="og:title" content="Yarn">
     <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
     <meta property="og:description" content="Fast, reliable, and secure dependency management.">
 
-    <title>yarn login | Yarn中文网</title>
+    <title>yarn ls | Yarn中文网</title>
     <meta name="description" content="Fast, reliable, and secure dependency management.">
 
     <link rel="stylesheet" href="./Yarn_files/main.css">
-    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/login">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/ls">
     <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
 
     <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
@@ -73,7 +73,7 @@
   <div class="container">
     
 
-      <h1 class="hero-text display-4">yarn login</h1>
+      <h1 class="hero-text display-4">yarn ls</h1>
     
   </div>
 </div>
@@ -124,6 +124,10 @@
   
 
   
+
+  
+
+  
     
     
     
@@ -143,26 +147,21 @@
 
 
     <div class="guide-content">
-      
-<p class="lead">保存<a href="https://www.npmjs.com/">npm registry</a>的用户名和邮箱地址。</p>
+      <p class="lead">列出所有安装的依赖</p>
 
-<h5 id="yarn-login-a-classtoc-idtoc-yarn-login-hreftoc-yarn-logina"><code class="highlighter-rouge">yarn login</code> <a class="toc" id="toc-yarn-login" href="#toc-yarn-login"></a></h5>
+<h5 id="yarn-ls-a-classtoc-idtoc-yarn-ls-hreftoc-yarn-lsa"><code class="highlighter-rouge">yarn ls</code> <a class="toc" id="toc-yarn-ls" href="#toc-yarn-ls"></a></h5>
 
-<p>运行这个命令将会提示你输入<a href="https://www.npmjs.com/">npm registry</a>的用户名和邮箱地址。这将不会询问你的密码。之后，当你运行那些需要授权的命令，比如<a href="/Clipublish.html"><code class="highlighter-rouge">yarn publish</code></a>等等，你需要手动输入你的密码。</p>
-
-<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn login
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn ls
 </code></pre>
 </div>
 
-<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn login vx.x.x
-question npm username: my-username
-question npm email: my-username@example.com
-✨  Done <span class="k">in </span>6.03s.
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn ls vx.x.x
+├─ package-1@1.3.3
+├─ package-2@5.0.9
+│  └─ package-3@^2.1.0
+└─ package-3@2.7.0
 </code></pre>
 </div>
-
-<p>运行<a href="Clilogout.html"><code class="highlighter-rouge">yarn logout</code></a>命令，可以删除掉之前保存的用户名和邮箱 you can delete your
-username and email.</p>
 
     </div>
 
@@ -171,14 +170,14 @@ username and email.</p>
         <span class="pull-md-left">
           ←
           前一步：
-          <a href="Clilink.html">yarn link</a>
+          <a href="Clilogout.html">yarn logout</a>
         </span>
       
 
       
         <span class="pull-md-right">
-          后一步：
-          <a href="Clilogout.html">yarn logout</a>
+          下一步：
+          <a href="Clioutdated.html">yarn outdated</a>
           →
         </span>
       
@@ -224,7 +223,7 @@ username and email.</p>
           $("#header").load("Header.html"); 
           $("#footer").load("Footer.html"); 
           $('#cliNav').load("CLINav.html", function(){
-            $('#cliNav').find('a[href="/Clilogin.html"]').removeAttr('href').addClass('active');
+            $('#cliNav').find('a[href="/Clils.html"]').removeAttr('href').addClass('active');
           });
         });
     </script>

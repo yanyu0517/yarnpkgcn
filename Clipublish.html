@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<!-- saved from url=(0037)https://yarnpkg.com/en/docs/cli/login -->
+<!-- saved from url=(0039)https://yarnpkg.com/en/docs/cli/publish -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/login">
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/publish">
     <meta property="og:site_name" content="Yarn">
     <meta property="og:title" content="Yarn">
     <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
     <meta property="og:description" content="Fast, reliable, and secure dependency management.">
 
-    <title>yarn login | Yarn中文网</title>
+    <title>yarn publish | Yarn中文网</title>
     <meta name="description" content="Fast, reliable, and secure dependency management.">
 
     <link rel="stylesheet" href="./Yarn_files/main.css">
-    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/login">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/publish">
     <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
 
     <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
@@ -73,7 +73,7 @@
   <div class="container">
     
 
-      <h1 class="hero-text display-4">yarn login</h1>
+      <h1 class="hero-text display-4">yarn publish</h1>
     
   </div>
 </div>
@@ -124,6 +124,18 @@
   
 
   
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     
     
     
@@ -143,26 +155,29 @@
 
 
     <div class="guide-content">
-      
-<p class="lead">保存<a href="https://www.npmjs.com/">npm registry</a>的用户名和邮箱地址。</p>
+      <p class="lead">发布一个包到npm仓库。</p>
 
-<h5 id="yarn-login-a-classtoc-idtoc-yarn-login-hreftoc-yarn-logina"><code class="highlighter-rouge">yarn login</code> <a class="toc" id="toc-yarn-login" href="#toc-yarn-login"></a></h5>
+<p>一旦发布了一个包，那么本次发布会生成一个版本，这个版本对应的包已经固定了，无法再被修改，因此在发布前请谨慎。</p>
 
-<p>运行这个命令将会提示你输入<a href="https://www.npmjs.com/">npm registry</a>的用户名和邮箱地址。这将不会询问你的密码。之后，当你运行那些需要授权的命令，比如<a href="/Clipublish.html"><code class="highlighter-rouge">yarn publish</code></a>等等，你需要手动输入你的密码。</p>
+<h5 id="yarn-publish-a-classtoc-idtoc-yarn-publish-hreftoc-yarn-publisha"><code class="highlighter-rouge">yarn publish</code> <a class="toc" id="toc-yarn-publish" href="#toc-yarn-publish"></a></h5>
 
-<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn login
-</code></pre>
-</div>
+<p>读取当前路径下<code class="highlighter-rouge">package.json</code>中的内容，发布包。</p>
 
-<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn login vx.x.x
-question npm username: my-username
-question npm email: my-username@example.com
-✨  Done <span class="k">in </span>6.03s.
-</code></pre>
-</div>
+<h5 id="yarn-publish-tarball-a-classtoc-idtoc-yarn-publish-tarball-hreftoc-yarn-publish-tarballa"><code class="highlighter-rouge">yarn publish [tarball]</code> <a class="toc" id="toc-yarn-publish-tarball" href="#toc-yarn-publish-tarball"></a></h5>
 
-<p>运行<a href="Clilogout.html"><code class="highlighter-rouge">yarn logout</code></a>命令，可以删除掉之前保存的用户名和邮箱 you can delete your
-username and email.</p>
+<p>发布一个后缀为<code class="highlighter-rouge">.tgz</code>的gzip压缩包。</p>
+
+<h5 id="yarn-publish-folder-a-classtoc-idtoc-yarn-publish-folder-hreftoc-yarn-publish-foldera"><code class="highlighter-rouge">yarn publish [folder]</code> <a class="toc" id="toc-yarn-publish-folder" href="#toc-yarn-publish-folder"></a></h5>
+
+<p>发布在一个指定目录下的包。<code class="highlighter-rouge">&lt;folder&gt;/package.json</code>将会描述包的信息。</p>
+
+<h5 id="yarn-publish---tag-tag-a-classtoc-idtoc-yarn-publish-tag-hreftoc-yarn-publish-taga"><code class="highlighter-rouge">yarn publish --tag &lt;tag&gt;</code> <a class="toc" id="toc-yarn-publish-tag" href="#toc-yarn-publish-tag"></a></h5>
+
+<p>为<code class="highlighter-rouge">yarn publish</code>命令增加tag参数，这将会为你发布的包附加一个指定的tag。例如，如果你执行<code class="highlighter-rouge">yarn publish --tag beta</code>命令，并且你的包的名字是<code class="highlighter-rouge">blorp</code>，那么其他人执行<code class="highlighter-rouge">yarn add blorp@beta</code>命令，就可以指定要安装beta版本的blorp。</p>
+
+<h5 id="yarn-publish---access-publicrestricted-a-classtoc-idtoc-yarn-publish-access-hreftoc-yarn-publish-accessa"><code class="highlighter-rouge">yarn publish --access &lt;public|restricted&gt;</code> <a class="toc" id="toc-yarn-publish-access" href="#toc-yarn-publish-access"></a></h5>
+
+<p>参数<code class="highlighter-rouge">--access</code>用来控制发布的包是否是公开的。</p>
 
     </div>
 
@@ -171,14 +186,14 @@ username and email.</p>
         <span class="pull-md-left">
           ←
           前一步：
-          <a href="Clilink.html">yarn link</a>
+          <a href="Clipack.html">yarn pack</a>
         </span>
       
 
       
         <span class="pull-md-right">
-          后一步：
-          <a href="Clilogout.html">yarn logout</a>
+          下一步：
+          <a href="Cliremove.html">yarn remove</a>
           →
         </span>
       
@@ -224,7 +239,7 @@ username and email.</p>
           $("#header").load("Header.html"); 
           $("#footer").load("Footer.html"); 
           $('#cliNav').load("CLINav.html", function(){
-            $('#cliNav').find('a[href="/Clilogin.html"]').removeAttr('href').addClass('active');
+            $('#cliNav').find('a[href="/Clipublish.html"]').removeAttr('href').addClass('active');
           });
         });
     </script>

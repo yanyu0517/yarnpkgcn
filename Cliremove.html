@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<!-- saved from url=(0037)https://yarnpkg.com/en/docs/cli/login -->
+<!-- saved from url=(0038)https://yarnpkg.com/en/docs/cli/remove -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/login">
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/remove">
     <meta property="og:site_name" content="Yarn">
     <meta property="og:title" content="Yarn">
     <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
     <meta property="og:description" content="Fast, reliable, and secure dependency management.">
 
-    <title>yarn login | Yarn中文网</title>
+    <title>yarn remove | Yarn中文网</title>
     <meta name="description" content="Fast, reliable, and secure dependency management.">
 
     <link rel="stylesheet" href="./Yarn_files/main.css">
-    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/login">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/remove">
     <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
 
     <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
@@ -73,7 +73,7 @@
   <div class="container">
     
 
-      <h1 class="hero-text display-4">yarn login</h1>
+      <h1 class="hero-text display-4">yarn remove</h1>
     
   </div>
 </div>
@@ -124,6 +124,20 @@
   
 
   
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     
     
     
@@ -143,26 +157,15 @@
 
 
     <div class="guide-content">
-      
-<p class="lead">保存<a href="https://www.npmjs.com/">npm registry</a>的用户名和邮箱地址。</p>
+      <h5 id="yarn-remove-package-a-classtoc-idtoc-yarn-remove-package-hreftoc-yarn-remove-packagea"><code class="highlighter-rouge">yarn remove [package]</code> <a class="toc" id="toc-yarn-remove-package" href="#toc-yarn-remove-package"></a></h5>
 
-<h5 id="yarn-login-a-classtoc-idtoc-yarn-login-hreftoc-yarn-logina"><code class="highlighter-rouge">yarn login</code> <a class="toc" id="toc-yarn-login" href="#toc-yarn-login"></a></h5>
+<p>运行<code class="highlighter-rouge">yarn remove foo</code>删除名为<code class="highlighter-rouge">foo</code>的依赖。这个而命令也会同时更新<code class="highlighter-rouge">package.json</code>文件和<code class="highlighter-rouge">yarn.lock</code>文件。这样其他人执行<code class="highlighter-rouge">yarn</code> 或者<code class="highlighter-rouge">yarn install</code>命令，将会得到更新后的依赖。</p>
 
-<p>运行这个命令将会提示你输入<a href="https://www.npmjs.com/">npm registry</a>的用户名和邮箱地址。这将不会询问你的密码。之后，当你运行那些需要授权的命令，比如<a href="/Clipublish.html"><code class="highlighter-rouge">yarn publish</code></a>等等，你需要手动输入你的密码。</p>
+<p>在命令后更随多个依赖名字作为参数，这些名字以空格分割，yarn会批量删除这些依赖。例如<code class="highlighter-rouge">yarn remove foo bar baz</code>。</p>
 
-<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn login
-</code></pre>
-</div>
+<p>Yarn在删除依赖的同时，一定会修改<code class="highlighter-rouge">package.json</code>文件，这确保了同一个包的不同用户能够有一致依赖。</p>
 
-<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn login vx.x.x
-question npm username: my-username
-question npm email: my-username@example.com
-✨  Done <span class="k">in </span>6.03s.
-</code></pre>
-</div>
-
-<p>运行<a href="Clilogout.html"><code class="highlighter-rouge">yarn logout</code></a>命令，可以删除掉之前保存的用户名和邮箱 you can delete your
-username and email.</p>
+<p>当你删除了一个依赖，所有种类的依赖都将会被删除，包括：development、production、optional、和peer dependencies。</p>
 
     </div>
 
@@ -171,14 +174,14 @@ username and email.</p>
         <span class="pull-md-left">
           ←
           前一步：
-          <a href="Clilink.html">yarn link</a>
+          <a href="Clipublish.html">yarn publish</a>
         </span>
       
 
       
         <span class="pull-md-right">
-          后一步：
-          <a href="Clilogout.html">yarn logout</a>
+          下一步：
+          <a href="Clirun.html">yarn run</a>
           →
         </span>
       
@@ -224,7 +227,7 @@ username and email.</p>
           $("#header").load("Header.html"); 
           $("#footer").load("Footer.html"); 
           $('#cliNav').load("CLINav.html", function(){
-            $('#cliNav').find('a[href="/Clilogin.html"]').removeAttr('href').addClass('active');
+            $('#cliNav').find('a[href="/Cliremove.html"]').removeAttr('href').addClass('active');
           });
         });
     </script>
