@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://yarnpkg.com/en/docs/cli/install -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/install">
+    <meta property="og:site_name" content="Yarn">
+    <meta property="og:title" content="Yarn">
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
+    <meta property="og:description" content="Fast, reliable, and secure dependency management.">
+
+    <title>yarn install | Yarn中文网</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+
+    <link rel="stylesheet" href="./Yarn_files/main.css">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/install">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
+
+    <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="./Yarn_files/docsearch.min.css">
+  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+<nav id="header" class="navbar navbar-static-top navbar-light">
+</nav>
+
+    
+
+
+
+
+
+
+
+
+
+<div class="hero">
+  <div class="container">
+    
+
+      <h1 class="hero-text display-4">yarn install</h1>
+    
+  </div>
+</div>
+
+<div class="container">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+
+
+
+
+<div class="row">
+  <div class="col-md-8 guide">
+    
+
+
+
+
+
+
+
+
+    <div class="guide-content">
+      <p><code class="highlighter-rouge">yarn install</code>命令是用来安装项目包的所有依赖。当你从头下载一个新的项目，或者其他协同开发者为项目包新增了一个依赖，你都需要调用这个命令。</p>
+
+<p>如果你之前使用过npm，那么你一定曾经用过<code class="highlighter-rouge">--save</code>或者
+<code class="highlighter-rouge">--save-dev</code>。在Yarn中，这两个参数已经被<code class="highlighter-rouge">yarn add</code>和<code class="highlighter-rouge">yarn add --dev</code>代替。关于yarn add的更多信息，请查看<a href="/Cliadd.html">the <code class="highlighter-rouge">yarn add</code></a>。</p>
+
+<h5 id="yarn-install-a-classtoc-idtoc-yarn-install-hreftoc-yarn-installa"><code class="highlighter-rouge">yarn install</code> <a class="toc" id="toc-yarn-install" href="#toc-yarn-install"></a></h5>
+
+<p>把<code class="highlighter-rouge">package.json</code>文件中列出的所有依赖，安装到<code class="highlighter-rouge">node_modules</code>文件夹中。</p>
+
+<h5 id="yarn-install---flat-a-classtoc-idtoc-yarn-install-flat-hreftoc-yarn-install-flata"><code class="highlighter-rouge">yarn install --flat</code> <a class="toc" id="toc-yarn-install-flat" href="#toc-yarn-install-flat"></a></h5>
+
+<p>每个依赖仅允许安装一个版本。首次运行命令会提示你为每一个依赖选择版本。你的选择将会被记录了在<code class="highlighter-rouge">package.json</code>文件的<code class="highlighter-rouge">resolutions</code>选项。</p>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="s2">"resolutions"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"package-a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"package-b"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"package-c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5.2"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h5 id="yarn-install---force-a-classtoc-idtoc-yarn-install-force-hreftoc-yarn-install-forcea"><code class="highlighter-rouge">yarn install --force</code> <a class="toc" id="toc-yarn-install-force" href="#toc-yarn-install-force"></a></h5>
+
+<p>将会重新安装所有的依赖，及时那些之前已经被安装过的依赖。</p>
+
+<h5 id="yarn-install---har-a-classtoc-idtoc-yarn-install-har-hreftoc-yarn-install-hara"><code class="highlighter-rouge">yarn install --har</code> <a class="toc" id="toc-yarn-install-har" href="#toc-yarn-install-har"></a></h5>
+
+<p>为安装过程中所有的网络链接输出一个<a href="https://en.wikipedia.org/wiki/.har">HTTP archive</a>文件。HAR文件通常用来评估网络的好坏，可以通过<a href="https://toolbox.googleapps.com/apps/har_analyzer/">Google’s HAR Analyzer</a>或者<a href="http://www.softwareishard.com/blog/har-viewer/">HAR Viewer</a>这类工具分析HAR文件。</p>
+
+<h5 id="yarn-install---no-lockfile-a-classtoc-idtoc-yarn-install-no-lockfile-hreftoc-yarn-install-no-lockfilea"><code class="highlighter-rouge">yarn install --no-lockfile</code> <a class="toc" id="toc-yarn-install-no-lockfile" href="#toc-yarn-install-no-lockfile"></a></h5>
+
+<p>安装时不读取或者生成<code class="highlighter-rouge">yarn.lock</code>文件。</p>
+
+<h5 id="yarn-install---production-a-classtoc-idtoc-yarn-install-production-hreftoc-yarn-install-productiona"><code class="highlighter-rouge">yarn install --production</code> <a class="toc" id="toc-yarn-install-production" href="#toc-yarn-install-production"></a></h5>
+
+<p>使用<code class="highlighter-rouge">--production</code>参数，或者当<code class="highlighter-rouge">NODE_ENV</code>环境变量被设置为<code class="highlighter-rouge">production</code>，Yarn将不会安装<code class="highlighter-rouge">package.json</code>中的<code class="highlighter-rouge">devDependencies</code>。</p>
+
+<blockquote>
+  <p><strong>Note:</strong> <code class="highlighter-rouge">--prod</code>是<code class="highlighter-rouge">--production</code>的别名。</p>
+</blockquote>
+
+<h5 id="yarn-install---pure-lockfile-a-classtoc-idtoc-yarn-install-pure-lockfile-hreftoc-yarn-install-pure-lockfilea"><code class="highlighter-rouge">yarn install --pure-lockfile</code> <a class="toc" id="toc-yarn-install-pure-lockfile" href="#toc-yarn-install-pure-lockfile"></a></h5>
+
+<p>安装时不生成<code class="highlighter-rouge">yarn.lock</code>文件。</p>
+
+    </div>
+
+    <p class="guide-controls">
+      
+        <span class="pull-md-left">
+          ←
+          前一步：
+          <a href="Cliinit.html">yarn init</a>
+        </span>
+      
+
+      
+        <span class="pull-md-right">
+          下一步：
+          <a href="Clilicenses.html">yarn licenses</a>
+          →
+        </span>
+      
+    </p>
+
+    
+  </div>
+
+  <div id="cliNav" class="col-md-4">
+  </div>
+</div>
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+<hr class="feature-divider">
+
+<div id="footer" class="container">
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85522875-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <script type="text/javascript" src="./Yarn_files/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(function(){
+          $("#header").load("Header.html"); 
+          $("#footer").load("Footer.html"); 
+          $('#cliNav').load("CLINav.html", function(){
+            $('#cliNav').find('a[href="/Cliinstall.html"]').removeAttr('href').addClass('active');
+          });
+        });
+    </script>
+    <script type="text/javascript" src="./Yarn_files/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./Yarn_files/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="./Yarn_files/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+
+    
+  
+
+</body></html>
