@@ -58,16 +58,18 @@ success Unregistered <span class="s2">"react"</span>.
                 <p class="guide-controls">
                     <span class="pull-md-left">
           &larr;
-          Previous:
+          前一步：
           <a href="/Clitest.html">yarn test</a>
         </span>
                     <span class="pull-md-right">
-          Next:
+          下一步：
           <a href="/Cliupgrade.html">yarn upgrade</a>
           &rarr;
         </span>
                 </p>
             </div>
+            <div id="cliNav" class="col-md-4">
+  </div>
             <hr class="feature-divider">
             <div id="footer" class="container"></div>
             <script>
@@ -92,7 +94,7 @@ success Unregistered <span class="s2">"react"</span>.
                 $("#header").load("Header.html");
                 $("#footer").load("Footer.html");
                 $('#cliNav').load("CLINav.html", function() {
-                    $('#cliNav').find('a[href="/Cliadd.html"]').removeAttr('href').addClass('active');
+                    $('#cliNav').find('a[href="/Cliunlink.html"]').removeAttr('href').addClass('active');
                 });
             });
             </script>

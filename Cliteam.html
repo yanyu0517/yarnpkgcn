@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://yarnpkg.com/en/docs/cli/team -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/team">
+    <meta property="og:site_name" content="Yarn">
+    <meta property="og:title" content="Yarn">
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
+    <meta property="og:description" content="Fast, reliable, and secure dependency management.">
+
+    <title>yarn team | Yarn中文网</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+
+    <link rel="stylesheet" href="./Yarn_files/main.css">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/team">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
+
+    <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="./Yarn_files/docsearch.min.css">
+  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+<nav id="header" class="navbar navbar-static-top navbar-light">
+</nav>
+
+    
+
+
+
+
+
+
+
+
+
+<div class="hero">
+  <div class="container">
+    
+
+      <h1 class="hero-text display-4">yarn team</h1>
+    
+  </div>
+</div>
+
+<div class="container">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+
+
+
+
+<div class="row">
+  <div class="col-md-8 guide">
+    
+
+
+
+
+
+
+
+
+    <div class="guide-content">
+      <p class="lead">维护小组成员</p>
+
+<h5 id="yarn-team-a-classtoc-idtoc-yarn-team-hreftoc-yarn-teama"><code class="highlighter-rouge">yarn team</code> <a class="toc" id="toc-yarn-team" href="#toc-yarn-team"></a></h5>
+
+<p>管理组织中的小组，以及小组中的成员</p>
+
+<h3 id="commands-a-classtoc-idtoc-commands-hreftoc-commandsa">命令 <a class="toc" id="toc-commands" href="#toc-commands"></a></h3>
+
+<h5 id="yarn-team-create-scopeteam-a-classtoc-idtoc-yarn-team-create-hreftoc-yarn-team-createa"><code class="highlighter-rouge">yarn team create &lt;scope:team&gt;</code> <a class="toc" id="toc-yarn-team-create" href="#toc-yarn-team-create"></a></h5>
+
+<p>创建一个新的小组</p>
+
+<h5 id="yarn-team-destroy-scopeteam-a-classtoc-idtoc-yarn-team-destroy-hreftoc-yarn-team-destroya"><code class="highlighter-rouge">yarn team destroy &lt;scope:team&gt;</code> <a class="toc" id="toc-yarn-team-destroy" href="#toc-yarn-team-destroy"></a></h5>
+
+<p>销毁一个现有的小组</p>
+
+<h5 id="yarn-team-add-scopeteam-user-a-classtoc-idtoc-yarn-team-add-hreftoc-yarn-team-adda"><code class="highlighter-rouge">yarn team add &lt;scope:team&gt; &lt;user&gt;</code> <a class="toc" id="toc-yarn-team-add" href="#toc-yarn-team-add"></a></h5>
+
+<p>为小组添加一个成员</p>
+
+<h5 id="yarn-team-rm-scopeteam-user-a-classtoc-idtoc-yarn-team-rm-hreftoc-yarn-team-rma"><code class="highlighter-rouge">yarn team rm &lt;scope:team&gt; &lt;user&gt;</code> <a class="toc" id="toc-yarn-team-rm" href="#toc-yarn-team-rm"></a></h5>
+
+<p>从小组中删除其中一个成员。</p>
+
+<h5 id="yarn-team-ls-scopescopeteam-a-classtoc-idtoc-yarn-team-ls-hreftoc-yarn-team-lsa"><code class="highlighter-rouge">yarn team ls &lt;scope&gt;|&lt;scope:team&gt;</code> <a class="toc" id="toc-yarn-team-ls" href="#toc-yarn-team-ls"></a></h5>
+
+<p>如果在组织的层级执行这个命令，将会列出该组织下的所有小组。如果在小组的层级执行这个命令，将会列出该小组下的所有成员。</p>
+
+<h3 id="details-a-classtoc-idtoc-yarn-team-details-hreftoc-yarn-team-detailsa">详情 <a class="toc" id="toc-yarn-team-details" href="#toc-yarn-team-details"></a></h3>
+
+<p>yarn小组可以直接操作当前的包仓库，通过命令行<code class="highlighter-rouge">--registry=&lt;registry url&gt;</code>对其进行配置。</p>
+
+<p>在组织内部，只有被赋予了<em>小组管理员</em>角色的成员，才能创建小组，并管理小组的成员。组织中所有的成员都能查看小组和小组内的成员。</p>
+
+<p>组织的创建、小组管理员的管理以及组织成员的管理，都是通过npm网站进行的，没有CLI命令。</p>
+
+<p>yarn访问命令能够授权或者回收小组对组织中包的权限。</p>
+
+    </div>
+
+    <p class="guide-controls">
+      
+        <span class="pull-md-left">
+          ←
+          前一步：
+          <a href="Clitag.html">yarn tag</a>
+        </span>
+      
+
+      
+        <span class="pull-md-right">
+          下一步：
+          <a href="Clitest.html">yarn test</a>
+          →
+        </span>
+      
+    </p>
+
+    
+  </div>
+
+  <div id="cliNav" class="col-md-4">
+
+  </div>
+</div>
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+<hr class="feature-divider">
+
+<div id="footer" class="container">
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85522875-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <script type="text/javascript" src="./Yarn_files/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(function(){
+          $("#header").load("Header.html"); 
+          $("#footer").load("Footer.html"); 
+          $('#cliNav').load("CLINav.html", function(){
+            $('#cliNav').find('a[href="/Cliteam.html"]').removeAttr('href').addClass('active');
+          });
+        });
+    </script>
+    <script type="text/javascript" src="./Yarn_files/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./Yarn_files/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="./Yarn_files/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+
+    
+  
+
+</body></html>
