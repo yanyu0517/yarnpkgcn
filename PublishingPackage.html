@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://yarnpkg.com/en/docs/publishing-a-package -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/publishing-a-package">
+    <meta property="og:site_name" content="Yarn">
+    <meta property="og:title" content="Yarn">
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
+    <meta property="og:description" content="Fast, reliable, and secure dependency management.">
+
+    <title>发布包 | Yarn中文网</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+
+    <link rel="stylesheet" href="./Yarn_files/main.css">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/publishing-a-package">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
+
+    <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="./Yarn_files/docsearch.min.css">
+  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+<nav id="header" class="navbar navbar-static-top navbar-light">
+</nav>
+
+    
+
+
+
+
+
+
+
+
+
+<div class="hero">
+  <div class="container">
+    
+
+      <h1 class="hero-text display-4">发布包</h1>
+    
+  </div>
+</div>
+
+<div class="container">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+    
+    
+
+
+
+
+<div class="row">
+  <div class="col-md-8 guide">
+    
+
+
+
+
+
+
+
+
+    <div class="guide-content">
+      <p>为了能够让其他开发者使用你的包，你需要把你的包发布出去。</p>
+
+<p>Yarn的发布操作，会把你的包发布到<a href="https://www.npmjs.com/">npm仓库</a>中。</p>
+
+<h3 id="logging-into-npm-a-classtoc-idtoc-logging-into-npm-hreftoc-logging-into-npma">登录到npm <a class="toc" id="toc-logging-into-npm" href="#toc-logging-into-npm"></a></h3>
+
+<p>如果你还没有npm账号，那么首先你需要<a href="https://www.npmjs.com/signup">创建一个npm账号</a>。创建完成后，在Yarn中设置npm的用户名和邮箱地址。</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn login
+</code></pre>
+</div>
+
+<p>上面的命令会提示你输入用户名和邮箱地址，但是不会让你输入密码，Yarn不会持有你的密码。只有当你发布或者修改npm包的时候，才会提示你输入你的密码。</p>
+
+<h3 id="publishing-your-package-a-classtoc-idtoc-publishing-your-package-hreftoc-publishing-your-packagea">发布包<a class="toc" id="toc-publishing-your-package" href="#toc-publishing-your-package"></a></h3>
+
+<p>一旦你的包开发完成，并且测试结束后，你可以执行下面的命令发布包：</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn publish
+</code></pre>
+</div>
+
+<p>首先你会被要求输入一个新的版本号</p>
+
+<div class="highlighter-rouge"><pre class="rougeHighlight"><code>[1/4] Bumping version...
+info Current version: 1.0.0
+question New version: _____
+</code></pre>
+</div>
+
+<p>接下来你会被要求输入npm密码：</p>
+
+<div class="highlighter-rouge"><pre class="rougeHighlight"><code>[2/4] Logging in...
+info npm username: your-npm-username
+info npm username: you@example.com
+question npm password: ____________
+</code></pre>
+</div>
+
+<p>最后，Yarn会发布包并且从npm中退出权限。</p>
+
+<div class="highlighter-rouge"><pre class="rougeHighlight"><code>[3/4] Publishing...
+success Published.
+[4/4] Revoking token...
+success Revoked login token.
+✨  Done in 10.53s.
+</code></pre>
+</div>
+
+<p>每次发布包的工作流都与上面是一样的。</p>
+
+<h3 id="accessing-your-package-a-classtoc-idtoc-accessing-your-package-hreftoc-accessing-your-packagea">访问包<a class="toc" id="toc-accessing-your-package" href="#toc-accessing-your-package"></a></h3>
+
+<p>在https://www.npmjs.com/package/my-new-project应该可以访问到你之前发布的<code class="highlighter-rouge">my-new-project</code>包，并且能够通过下面命令安装：</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn add my-new-project
+</code></pre>
+</div>
+
+<p>也可以通过下面命令查看包的信息：</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>yarn info my-new-project
+</code></pre>
+</div>
+
+<div class="language-js highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span> <span class="nl">name</span><span class="p">:</span> <span class="s1">'my-new-project'</span><span class="p">,</span>
+  <span class="nx">description</span><span class="err">:</span> <span class="s1">'My New Project description.'</span><span class="p">,</span>
+  <span class="s1">'dist-tags'</span><span class="err">:</span> <span class="p">{</span> <span class="nl">latest</span><span class="p">:</span> <span class="s1">'1.0.0'</span> <span class="p">},</span>
+  <span class="nx">versions</span><span class="err">:</span> <span class="p">[</span> <span class="s1">'1.0.0'</span> <span class="p">],</span>
+  <span class="nx">maintainers</span><span class="err">:</span> <span class="p">[</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'Your Name'</span><span class="p">,</span> <span class="na">email</span><span class="p">:</span> <span class="s1">'you@example.com'</span> <span class="p">}</span> <span class="p">],</span>
+  <span class="nx">time</span><span class="err">:</span>
+  <span class="p">{</span> <span class="nl">modified</span><span class="p">:</span> <span class="s1">'2016-10-18T05:52:40+00:00'</span><span class="p">,</span>
+    <span class="nx">created</span><span class="err">:</span> <span class="s1">'2016-10-18T05:52:40+00:00'</span><span class="p">,</span>
+    <span class="s1">'1.0.0'</span><span class="err">:</span> <span class="s1">'2016-10-18T05:52:40+00:00'</span> <span class="p">},</span>
+  <span class="nx">homepage</span><span class="err">:</span> <span class="s1">'https://my-new-project-website.com/'</span><span class="p">,</span>
+  <span class="nx">keywords</span><span class="err">:</span> <span class="p">[</span> <span class="s1">'cool'</span><span class="p">,</span> <span class="s1">'useful'</span><span class="p">,</span> <span class="s1">'stuff'</span> <span class="p">],</span>
+  <span class="nx">repository</span><span class="err">:</span>
+   <span class="p">{</span> <span class="nl">url</span><span class="p">:</span> <span class="s1">'https://example.com/your-username/my-new-project'</span><span class="p">,</span>
+     <span class="nx">type</span><span class="err">:</span> <span class="s1">'git'</span> <span class="p">},</span>
+  <span class="nx">contributors</span><span class="err">:</span>
+   <span class="p">[</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'Your Friend'</span><span class="p">,</span>
+       <span class="na">email</span><span class="p">:</span> <span class="s1">'their-email@example.com'</span><span class="p">,</span>
+       <span class="na">url</span><span class="p">:</span> <span class="s1">'http://their-website.com'</span> <span class="p">},</span>
+     <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'Another Friend'</span><span class="p">,</span>
+       <span class="na">email</span><span class="p">:</span> <span class="s1">'another-email@example.com'</span><span class="p">,</span>
+       <span class="na">url</span><span class="p">:</span> <span class="s1">'https://another-website.org'</span> <span class="p">}</span> <span class="p">],</span>
+  <span class="nx">author</span><span class="err">:</span> <span class="p">{</span> <span class="nl">name</span><span class="p">:</span> <span class="s1">'Your Name'</span><span class="p">,</span> <span class="nx">email</span><span class="err">:</span> <span class="s1">'you@example.com'</span> <span class="p">},</span>
+  <span class="nx">bugs</span><span class="err">:</span> <span class="p">{</span> <span class="nl">url</span><span class="p">:</span> <span class="s1">'https://github.com/you/my-new-project/issues'</span> <span class="p">},</span>
+  <span class="nx">license</span><span class="err">:</span> <span class="s1">'MIT'</span><span class="p">,</span>
+  <span class="nx">readmeFilename</span><span class="err">:</span> <span class="s1">'README.md'</span><span class="p">,</span>
+  <span class="nx">version</span><span class="err">:</span> <span class="s1">'1.0.0'</span><span class="p">,</span>
+  <span class="nx">main</span><span class="err">:</span> <span class="s1">'index.js'</span><span class="p">,</span>
+  <span class="nx">files</span><span class="err">:</span> <span class="p">[</span> <span class="s1">'index.js'</span><span class="p">,</span> <span class="s1">'lib/*.js'</span><span class="p">,</span> <span class="s1">'bin/*.js'</span> <span class="p">],</span>
+  <span class="nx">bin</span><span class="err">:</span> <span class="p">{</span> <span class="s1">'my-new-project-cli'</span><span class="err">:</span> <span class="s1">'bin/my-new-project-cli.js'</span> <span class="p">},</span>
+  <span class="nx">dist</span><span class="err">:</span>
+   <span class="p">{</span> <span class="nl">shasum</span><span class="p">:</span> <span class="s1">'908bc9a06fa4421e96ceda243c1ee1789b0dc763'</span><span class="p">,</span>
+     <span class="nx">tarball</span><span class="err">:</span> <span class="s1">'https://registry.npmjs.org/my-new-project/-/my-new-project-1.0.0.tgz'</span> <span class="p">},</span>
+  <span class="nx">directories</span><span class="err">:</span> <span class="p">{}</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+    </div>
+
+    <p class="guide-controls">
+      
+        <span class="pull-md-left">
+          ←
+          前一步：
+          <a href="CreatingPackage.html">创建包</a>
+        </span>
+      
+
+      
+    </p>
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <ul class="nav nav-stacked guide-nav">
+      
+        <li class="nav-item">
+          
+            <a class="nav-link" href="/CreatingPackage.html">
+              创建包
+            </a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a class="nav-link active">
+              发布包
+            </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+<hr class="feature-divider">
+
+<div id="footer" class="container">
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85522875-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <script type="text/javascript" src="./Yarn_files/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(function(){
+          $("#header").load("Header.html"); 
+          $("#footer").load("Footer.html"); 
+        });
+    </script>
+    <script type="text/javascript" src="./Yarn_files/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./Yarn_files/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="./Yarn_files/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+
+    
+  
+
+</body></html>

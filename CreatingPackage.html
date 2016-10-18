@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://yarnpkg.com/en/docs/creating-a-package -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/creating-a-package">
+    <meta property="og:site_name" content="Yarn">
+    <meta property="og:title" content="Yarn">
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
+    <meta property="og:description" content="Fast, reliable, and secure dependency management.">
+
+    <title>创建包 | Yarn中文网</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+
+    <link rel="stylesheet" href="./Yarn_files/main.css">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/creating-a-package">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
+
+    <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="./Yarn_files/docsearch.min.css">
+  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+<nav id="header" class="navbar navbar-static-top navbar-light">
+</nav>
+
+    
+
+
+
+
+
+
+
+
+
+<div class="hero">
+  <div class="container">
+    
+
+      <h1 class="hero-text display-4">创建包</h1>
+    
+  </div>
+</div>
+
+<div class="container">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+
+
+
+
+<div class="row">
+  <div class="col-md-8 guide">
+    
+
+
+
+
+
+
+
+
+    <div class="guide-content">
+      
+<p>一个<strong>包</strong>就是一个目录，目录中包含了代码和一个描述包信息的<code class="highlighter-rouge">package.json</code>文件。</p>
+
+<p>大部分包都会存放到版本控制系统中，比如git。Yarn适用于任何一种版本控制，只不过我们的例子都是使用git。</p>
+
+<blockquote>
+  <p><strong>注意：</strong>在阅读下面的文章之前，请确保你安装了<a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a>和<a href="https://yarnpkg.com/en/docs/install">Yarn</a>。</p>
+</blockquote>
+
+<h3 id="creating-your-first-package-a-classtoc-idtoc-creating-your-first-package-hreftoc-creating-your-first-packagea">创建你的第一个包<a class="toc" id="toc-creating-your-first-package" href="#toc-creating-your-first-package"></a></h3>
+
+<p>运行下面的命令：</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>git init my-new-project
+<span class="nb">cd </span>my-new-project
+yarn init
+</code></pre>
+</div>
+
+<p>这将会创建一个新的git工程，进入git工程的根目录后，yarn会创建一个交互式的表单问答卷：</p>
+
+<div class="language-sh highlighter-rouge"><pre class="rougeHighlight"><code>name <span class="o">(</span>my-new-project<span class="o">)</span>:
+version <span class="o">(</span>1.0.0<span class="o">)</span>:
+description:
+entry point <span class="o">(</span>index.js<span class="o">)</span>:
+git repository:
+author:
+license <span class="o">(</span>MIT<span class="o">)</span>:
+</code></pre>
+</div>
+
+<p>你并不需要回答每一道问题，点击回车可以跳过问题。</p>
+
+<blockquote>
+  <p><strong>贴士：</strong><code class="highlighter-rouge">npm init --yes</code>命令会跳过所有问题，那么你的表单会使用默认值。</p>
+</blockquote>
+
+<h3 id="packagejson-a-classtoc-idtoc-package-json-hreftoc-package-jsona"><code class="highlighter-rouge">package.json</code> <a class="toc" id="toc-package-json" href="#toc-package-json"></a></h3>
+
+<p>执行完上述命令后，你会得到一个<code class="highlighter-rouge">package.json</code>文件，内容如下：</p>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-new-project"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My New Project description."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"index.js"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/your-username/my-new-project"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Name &lt;you@example.com&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><code class="highlighter-rouge">package.json</code>文件中的字段：</p>
+
+<ul>
+  <li><strong>name</strong>包的名字，你需要确保你起的名字在包仓库中是唯一的，不与其他重复。</li>
+  <li><strong>version</strong>包的版本，semver规范。你可以发布无数个版本，只要保证每次发布都是一个新版本。</li>
+  <li><strong>description</strong>包的描述，是一个可选项但是推荐填写。填写<code class="highlighter-rouge">description</code>可以帮助其他开发人员搜索和理解你的包。</li>
+  <li><strong>main</strong>包的入口，是其他程序用来调用你的包的入口文件。如果没有指定，那么默认为<code class="highlighter-rouge">index.js</code>。</li>
+  <li><strong>repository</strong>包的代码仓库，是一个可选项但是推荐填写。填写<code class="highlighter-rouge">repository</code>有助于其他开发者能够找到你的源代码，并贡献代码。</li>
+  <li><strong>author</strong>包的创建者或者维护者，格式：<code class="highlighter-rouge">"名字 &lt;you@example.com&gt; (http://your-website.com)"</code>。</li>
+  <li><strong>license</strong>包的license，是适用于你的包的法律条款以及你的代码能够被如何使用。</li>
+</ul>
+
+<p>当你运行<code class="highlighter-rouge">yarn init</code>命令，Yarn所做的唯一一件事就是创建上面的<code class="highlighter-rouge">package.json</code>文件，你可以很放心的编辑这个文件。</p>
+
+<h4 id="additional-fields-a-classtoc-idtoc-additional-fields-hreftoc-additional-fieldsa">附加字段<a class="toc" id="toc-additional-fields" href="#toc-additional-fields"></a></h4>
+
+<p>下面列出一些<code class="highlighter-rouge">package.json</code>中你可能会用到的附加字段。</p>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-new-project"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"cool"</span><span class="p">,</span><span class="w"> </span><span class="s2">"useful"</span><span class="p">,</span><span class="w"> </span><span class="s2">"stuff"</span><span class="p">],</span><span class="w">
+  </span><span class="nt">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-new-project-website.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bugs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/you/my-new-project/issues"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contributors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Your Friend &lt;their-email@example.com&gt; (http://their-website.com)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Another Friend &lt;another-email@example.com&gt; (https://another-website.org)"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"index.js"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lib/*.js"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bin/*.js"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"bin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"my-new-project-cli"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bin/my-new-project-cli.js"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<ul>
+  <li><strong>keywords</strong>包的关键词，其他开发人员能够通过关键词搜索你的包。</li>
+  <li><strong>homepage</strong>包的主页，主页中应该包括包的介绍、文档和其他资源。</li>
+  <li><strong>bugs</strong>包的bug，是一个链接，用来报告包的bug。</li>
+  <li><strong>contributors</strong>包的贡献者，如果有其他开发者对你对的包做了贡献，那么你可以把这些人列在<code class="highlighter-rouge">contributors</code>中。</li>
+  <li><strong>files</strong>包的文件，列出了你对包中那些文件是用来发布和安装的。如果没有指定，那么Yarn则认为是全部的文件。</li>
+  <li><strong>bin</strong>包的bin，包含了包的cli命令。</li>
+</ul>
+
+<p>如果想查看<code class="highlighter-rouge">package.json</code>所有的字段以及更多有关信息，请查看<a href="/Package.json.html">package.json</code> 文档</a>。</p>
+
+<h3 id="licensing-and-open-source-a-classtoc-idtoc-licensing-and-open-source-hreftoc-licensing-and-open-sourcea">许可与开源<a class="toc" id="toc-licensing-and-open-source" href="#toc-licensing-and-open-source"></a></h3>
+
+<p>Yarn的包通常是被鼓励<a href="https://opensource.org/definition">开源</a>的，然而需要注意的是发布包并不代表着就是开源了。</p>
+
+<p>每一个开源代码都需要制定一个许可，目前有很多许可可以选择，下面列出几种通用的许可供参考：</p>
+
+<ul>
+  <li><a href="http://choosealicense.com/licenses/mit/">MIT License</a></li>
+  <li><a href="http://choosealicense.com/licenses/apache-2.0/">Apache License 2.0</a></li>
+  <li><a href="http://choosealicense.com/licenses/gpl-3.0/">GNU General Public License 3.0</a></li>
+</ul>
+
+<p>更多许可请查看<a href="http://choosealicense.com/licenses/">许可列表</a>。</p>
+
+<p>一旦你选择了某一种许可，请把许可添加到<code class="highlighter-rouge">package.json</code>的<code class="highlighter-rouge">license</code>。</p>
+
+<blockquote>
+  <p><strong>注意：</strong>如果你不想开源你的软件，那么在选择许可时一定要谨慎。</p>
+</blockquote>
+
+<h3 id="code-sharing-a-classtoc-idtoc-code-sharing-hreftoc-code-sharinga">代码共享<a class="toc" id="toc-code-sharing" href="#toc-code-sharing"></a></h3>
+
+<p>如果你希望你开发的包的用户能够贡献代码，或者发布一些issue，你可以在网络中共享你的代码，下面有几个著名的代码仓库能够托管你的代码：</p>
+
+<ul>
+  <li><a href="https://github.com/">GitHub</a></li>
+  <li><a href="https://about.gitlab.com/">GitLab</a></li>
+  <li><a href="https://bitbucket.org/">Bitbucket</a></li>
+</ul>
+
+<p>你的代码托管在上面之后，其他开发人员能够查看你的代码，提交issue，贡献代码。一旦你在某一个地方托管了你的代码，请在<code class="highlighter-rouge">package.json</code>文件中添加下面的字段：</p>
+
+<div class="language-json highlighter-rouge"><pre class="rougeHighlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/username/my-new-project"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bugs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/username/my-new-project/issues"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/username/my-new-project"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="documentation-a-classtoc-idtoc-documentation-hreftoc-documentationa">文档 <a class="toc" id="toc-documentation" href="#toc-documentation"></a></h3>
+
+<p>在发布包之前，最好为你的包编写文档。如果没有编写文档，最小限度也要在包的根目录创建一个<code class="highlighter-rouge">README.md</code>文件，介绍你的包以及API等信息。</p>
+
+<p>好的文档能够让其他开发者尽快上手你的包，并在后续使用中提供帮助。考虑如果一个从来没有用过你的包的开发者会遇到什么问题。文档的编写要尽量的详细和准确，但是同时要保持简洁和易懂。<strong>一个高质量的文档会让你的包更加好用。</strong></p>
+
+<h3 id="keep-packages-small-a-classtoc-idtoc-keep-packages-small-hreftoc-keep-packages-smalla">轻量化包<a class="toc" id="toc-keep-packages-small" href="#toc-keep-packages-small"></a></h3>
+
+<p>Yarn的包建议是小巧和简单的。尽可能的把一个很大的包拆分成若干个小包。因为Yarn有能力在很短的时间内快速安装成数百上千的包，所以强烈建立采用小包的设计方式。</p>
+
+<p>对于包管理来说，小的包也是很好的。当安装这些依赖的时候，更小的包意味着更少依赖的数量，下载的文件数量和大小也会降低。</p>
+
+<p>每一次发布包都要谨慎，确保没有发布测试代码，或者其他不必要的代码。</p>
+
+<p>也要谨慎对待依赖，尽量选择依赖小而美的包，确保你对每一个很巨大的包的依赖都是必须的。</p>
+
+    </div>
+
+    <p class="guide-controls">
+      
+
+      
+        <span class="pull-md-right">
+          下一步：
+          <a href="/PublishingPackage.html">发布包</a>
+          →
+        </span>
+      
+    </p>
+
+    
+  </div>
+
+  <div class="col-md-4">
+    <ul class="nav nav-stacked guide-nav">
+      
+        <li class="nav-item">
+          
+            <a class="nav-link active">
+              创建包
+            </a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a class="nav-link" href="/PublishingPackage.html">
+              发布包
+            </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+<hr class="feature-divider">
+
+<div id="footer" class="container">
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85522875-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <script type="text/javascript" src="./Yarn_files/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(function(){
+          $("#header").load("Header.html"); 
+          $("#footer").load("Footer.html"); 
+        });
+    </script>
+    <script type="text/javascript" src="./Yarn_files/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./Yarn_files/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="./Yarn_files/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+
+    
+  
+
+</body></html>
