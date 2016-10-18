@@ -1,4 +1,5 @@
-
+$(function(){
+    var html = `
     <ul class="nav nav-stacked guide-nav">
       
         <li class="nav-item">
@@ -250,4 +251,9 @@
         </li>
       
     </ul>
-  
+  `;
+  window.selectCliNav = function(page){
+    $('#cliNav').html(html);
+    $('#cliNav').find('a[href="/' + page + '.html"]').removeAttr('href').addClass('active');
+  }
+});

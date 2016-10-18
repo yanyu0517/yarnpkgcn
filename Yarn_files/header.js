@@ -1,5 +1,6 @@
 
-  <div class="container">
+$(function(){
+    var html = `<div class="container">
 
     <a href="index.html">
       <svg class="logo navbar-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1154.8 518">
@@ -157,4 +158,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div>`;
+
+    $('#header').html(html);
+})
