@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)https://yarnpkg.com/en/docs/cli/run -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/run">
+    <meta property="og:site_name" content="Yarn">
+    <meta property="og:title" content="Yarn">
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
+    <meta property="og:description" content="Fast, reliable, and secure dependency management.">
+
+    <title>yarn run | Yarn中文网</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+
+    <link rel="stylesheet" href="./Yarn_files/main.css">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/run">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
+
+    <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="./Yarn_files/docsearch.min.css">
+  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+<nav id="header" class="navbar navbar-static-top navbar-light">
+</nav>
+
+    
+
+
+
+
+
+
+
+
+
+<div class="hero">
+  <div class="container">
+    
+
+      <h1 class="hero-text display-4">yarn run</h1>
+    
+  </div>
+</div>
+
+<div class="container">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+
+
+
+
+<div class="row">
+  <div class="col-md-8 guide">
+    
+
+
+
+
+
+
+
+
+    <div class="guide-content">
+      <p>运行脚本。</p>
+
+<h5 id="yarn-run-script-a-classtoc-idtoc-yarn-run-script-hreftoc-yarn-run-scripta"><code class="highlighter-rouge">yarn run [script]</code> <a class="toc" id="toc-yarn-run-script" href="#toc-yarn-run-script"></a></h5>
+
+<p>如果你已经在<code class="highlighter-rouge">package.json</code>文件中定义了<code class="highlighter-rouge">cripts</code>，那么可以使用这个命令执行指定的<code class="highlighter-rouge">[script]</code>。</p>
+
+<p>例如，</p>
+
+<div class="highlighter-rouge"><pre class="rougeHighlight"><code>yarn run test
+</code></pre>
+</div>
+
+<p>将会运行在<code class="highlighter-rouge">package.json</code>文件中定义的<code class="highlighter-rouge">test</code>脚本。</p>
+
+<h5 id="yarn-run-a-classtoc-idtoc-yarn-run-hreftoc-yarn-runa"><code class="highlighter-rouge">yarn run</code> <a class="toc" id="toc-yarn-run" href="#toc-yarn-run"></a></h5>
+
+<p>如果没有为<code class="highlighter-rouge">yarn run</code>命令指定需要运行的脚本，那么将会列出所有能够执行的脚本。</p>
+
+<h3 id="scripts-in-packagejson-a-classtoc-idtoc-scripts-in-package-json-hreftoc-scripts-in-package-jsona"><code class="highlighter-rouge">package.json</code>脚本<a class="toc" id="toc-scripts-in-package-json" href="#toc-scripts-in-package-json"></a></h3>
+
+<p><code class="highlighter-rouge">package.json</code>文件中的<code class="highlighter-rouge">scripts</code>数据项中定义了可以执行的脚本。</p>
+
+<p>例如，下面的例子定义了一个名为<code class="highlighter-rouge">test</code>的脚本，<code class="highlighter-rouge">yarn run test</code>将会执行<code class="highlighter-rouge">jest</code>框架，对代码进行自动化测试。</p>
+
+<div class="highlighter-rouge"><pre class="rougeHighlight"><code>"scripts": {
+  "test": "jest"
+},
+</code></pre>
+</div>
+
+    </div>
+
+    <p class="guide-controls">
+      
+        <span class="pull-md-left">
+          ←
+          前一步：
+          <a href="Cliremove.html">yarn remove</a>
+        </span>
+      
+
+      
+        <span class="pull-md-right">
+          后一步：
+          <a href="Cliself-update.html">yarn self-update</a>
+          →
+        </span>
+      
+    </p>
+
+    
+  </div>
+
+  <div id="cliNav" class="col-md-4">
+  </div>
+</div>
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+<hr class="feature-divider">
+
+<div id="footer" class="container">
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85522875-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <script type="text/javascript" src="./Yarn_files/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(function(){
+          $("#header").load("Header.html"); 
+          $("#footer").load("Footer.html"); 
+          $('#cliNav').load("CLINav.html", function(){
+            $('#cliNav').find('a[href="/Clirun.html"]').removeAttr('href').addClass('active');
+          });
+        });
+    </script>
+    <script type="text/javascript" src="./Yarn_files/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./Yarn_files/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="./Yarn_files/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+
+    
+  
+
+</body></html>

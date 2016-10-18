@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://yarnpkg.com/en/docs/cli/info -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="https://yarnpkg.com/en/docs/cli/info">
+    <meta property="og:site_name" content="Yarn">
+    <meta property="og:title" content="Yarn">
+    <meta property="og:image" content="https://yarnpkg.com/assets/og_image.png">
+    <meta property="og:description" content="Fast, reliable, and secure dependency management.">
+
+    <title>yarn info | Yarn中文网</title>
+    <meta name="description" content="Fast, reliable, and secure dependency management.">
+
+    <link rel="stylesheet" href="./Yarn_files/main.css">
+    <link rel="canonical" href="https://yarnpkg.com/en/docs/cli/info">
+    <link rel="alternate" type="application/rss+xml" title="Yarn" href="https://yarnpkg.com/feed.xml">
+
+    <link rel="icon" href="https://yarnpkg.com/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" href="./Yarn_files/docsearch.min.css">
+  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+<nav id="header" class="navbar navbar-static-top navbar-light">
+</nav>
+
+    
+
+
+
+
+
+
+
+
+
+<div class="hero">
+  <div class="container">
+    
+
+      <h1 class="hero-text display-4">yarn info</h1>
+    
+  </div>
+</div>
+
+<div class="container">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    
+
+
+
+
+<div class="row">
+  <div class="col-md-8 guide">
+    
+
+
+
+
+
+
+
+
+    <div class="guide-content">
+      <p class="lead">显示包的信息。</p>
+
+<h5 id="yarn-info-package-field-a-classtoc-idtoc-yarn-info-hreftoc-yarn-infoa"><code class="highlighter-rouge">yarn info &lt;package&gt; [&lt;field&gt;]</code> <a class="toc" id="toc-yarn-info" href="#toc-yarn-info"></a></h5>
+
+<p>运行这个命令将会以树形结构展现包的信息。这个项目可以不是本地的，可以直接获得远程仓库中某一个包的信息。</p>
+
+<div class="highlighter-rouge"><pre class="rougeHighlight"><code>$ yarn info react
+
+yarn info vx.x.x
+{ name: 'react',
+  version: '15.4.0-rc.2',
+  description: 'React is a JavaScript library for building user interfaces.',
+  time: { modified: '2016-10-06T22:09:27.397Z', ... } ... }
+</code></pre>
+</div>
+
+<p>默认的输出结构是用单引号序列化的，如果需要得到有效的JSON格式，可以使用<code class="highlighter-rouge">--json</code>参数：</p>
+
+<div class="highlighter-rouge"><pre class="rougeHighlight"><code>yarn info react --json
+
+{"type":"inspect","data":{"name":"react","time":{...}}}
+{"type":"finished","data":417}
+</code></pre>
+</div>
+
+<h3 id="information-for-a-specific-version-a-classtoc-idtoc-information-for-a-specific-version-hreftoc-information-for-a-specific-versiona">查看指定版本的信息<a class="toc" id="toc-information-for-a-specific-version" href="#toc-information-for-a-specific-version"></a></h3>
+
+<p>增加<code class="highlighter-rouge">@[version]</code>参数：</p>
+
+<div class="highlighter-rouge"><pre class="rougeHighlight"><code>$ yarn info react@15.3.0
+
+yarn info vx.x.x
+{ name: 'react',
+  version: '15.3.0',
+  description: 'React is a JavaScript library for building user interfaces.',
+  time: { modified: '2016-10-06T22:09:27.397Z', ... } ... }
+</code></pre>
+</div>
+
+<h3 id="selecting-specific-fields-a-classtoc-idtoc-selecting-specific-fields-hreftoc-selecting-specific-fieldsa">选择信息项<a class="toc" id="toc-selecting-specific-fields" href="#toc-selecting-specific-fields"></a></h3>
+
+<p>如果增加了信息项参数（可选的），那么只有该部分的信息会返回。</p>
+
+<div class="highlighter-rouge"><pre class="rougeHighlight"><code>$ yarn info react description
+
+yarn info vx.x.x
+React is a JavaScript library for building user interfaces.
+</code></pre>
+</div>
+
+<p>如果指定的信息项是多层级的，那么它的子节点会被打印：</p>
+
+<div class="highlighter-rouge"><pre class="rougeHighlight"><code>$ yarn info react time
+
+yarn info vx.x.x
+{ modified: '2016-10-06T22:09:27.397Z',
+  created: '2011-10-26T17:46:21.942Z', ... }
+
+yarn info react time --json
+{"type":"inspect","data":{"modified":"2016-10-06T22:09:27.397Z","created":...}}
+...
+</code></pre>
+</div>
+
+<h3 id="retrieving-the-readme-field-a-classtoc-idtoc-retrieving-the-readme-field-hreftoc-retrieving-the-readme-fielda">显示readme<a class="toc" id="toc-retrieving-the-readme-field" href="#toc-retrieving-the-readme-field"></a></h3>
+
+<p>因为<code class="highlighter-rouge">readme</code> 通常会非常长，<code class="highlighter-rouge">yarn info</code>默认是不打印<code class="highlighter-rouge">readme</code> 。如果需要，请添加readme参数：</p>
+
+<div class="highlighter-rouge"><pre class="rougeHighlight"><code>$ yarn info react readme
+
+yarn info vx.x.x
+## react
+
+An npm package to get you immediate access to
+[React](https://facebook.github.io/react/).
+...
+</code></pre>
+</div>
+
+    </div>
+
+    <p class="guide-controls">
+      
+        <span class="pull-md-left">
+          ←
+          前一步：
+          <a href="Cliglobal.html">yarn global</a>
+        </span>
+      
+
+      
+        <span class="pull-md-right">
+          下一步：
+          <a href="Cliinit.html">yarn init</a>
+          →
+        </span>
+      
+    </p>
+
+    
+  </div>
+
+  <div id="cliNav" class="col-md-4">
+  </div>
+</div>
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+<hr class="feature-divider">
+
+<div id="footer" class="container">
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85522875-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    <script type="text/javascript" src="./Yarn_files/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(function(){
+          $("#header").load("Header.html"); 
+          $("#footer").load("Footer.html"); 
+          $('#cliNav').load("CLINav.html", function(){
+            $('#cliNav').find('a[href="/Cliinfo.html"]').removeAttr('href').addClass('active');
+          });
+        });
+    </script>
+    <script type="text/javascript" src="./Yarn_files/tether.min.js" integrity="sha256-/5pHDZh2fv1eZImyfiThtB5Ag4LqDjyittT7fLjdT/8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./Yarn_files/bootstrap.min.js" integrity="sha256-+h0g0j7qusP72OZaLPCSZ5wjZLnoUUicoxbvrl14WxM=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="./Yarn_files/holder.min.js" integrity="sha256-ifihHN6L/pNU1ZQikrAb7CnyMBvisKG3SUAab0F3kVU=" crossorigin="anonymous"></script>
+
+    
+  
+
+</body></html>
