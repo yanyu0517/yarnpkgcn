@@ -135,7 +135,7 @@
 
 <p>在切换到Yarn后，如果你觉得Yarn并不适合你，那么你可以再次拥抱<code class="highlighter-rouge">npm</code>，这将会非常容易，并不需要做什么特别的改动。如果团队中没有人使用Yarn了，就可以删除掉<code class="highlighter-rouge">yarn.lock</code>文件。</p>
 
-<p>如果你现在在使用<code class="highlighter-rouge">npm-shrinkwrap.json</code>，那么请注意了使用Yarn可能会得到与其不同的依赖。Yarn并不支持多个npm shrinkwrap文件，因为这些shrinkwrap文件中没有足够的信息支持Yarn的更先进的算法。对于一个npm shrinkwrap来说会更容易切换到Yarn，只要把<code class="highlighter-rouge">npm-shrinkwrap.json</code>删除，并创建<code class="highlighter-rouge">yarn.lock</code> file.</p>文件就可以了。</p>
+<p>如果你正在使用<code class="highlighter-rouge">npm-shrinkwrap.json</code>文件，请注意，你最终可能会获得一组不同的依赖版本。Yarn并不能直接支持<code class="highlighter-rouge">npm-shrinkwrap.json</code>文件，因为<code class="highlighter-rouge">npm-shrinkwrap.json</code>文件没有足够的信息来支撑Yarn更具确定性的算法。如果你正在使用shrinkwrap方案，可以很容易就让所有项目的参与者同时切换到Yarn。只需删除现有的<code class="highlighter-rouge">npm-shrinkwrap.json</code>文件，并检入新建的<code class="highlighter-rouge">yarn.lock</code>文件即可。</p>
 
 <h3 id="cli-commands-comparison-a-classtoc-idtoc-cli-commands-comparison-hreftoc-cli-commands-comparisona">CLI命令行对照<a class="toc" id="toc-cli-commands-comparison" href="#toc-cli-commands-comparison"></a></h3>
 
